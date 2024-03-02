@@ -1,10 +1,14 @@
 import { Button, Image, Spinner } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 import React from "react";
+
+
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { FaChevronRight } from "react-icons/fa";
 
-const Row = ({ items, title }) => {
+const Row = ({ items, title, link }) => {
   const [loading, setLoading] = React.useState(true);
 
   const isMobile = window.innerWidth <= 768;
@@ -22,9 +26,14 @@ const Row = ({ items, title }) => {
 
   return (
     <div>
+      <div className="flex justify-between my-3 items-center">
       {title && (
-        <h2 className="text-2xl font-semibold text-white ml-3 mb-4">{title}</h2>
+        <h2 className="text-2xl font-semibold text-white ml-3">{title}</h2>
       )}
+      <div className="flex">
+      <Link className="flex items-center mr-3" to={link}>Load More<FaChevronRight /></Link>
+      </div>
+      </div>
       {loading ? (
         <div className="w-full h-10 flex items-center justify-start mb-4 ml-3">
           <Spinner size="lg" color="default" />
@@ -41,17 +50,13 @@ const Row = ({ items, title }) => {
 };
 
 function LeftArrow() {
-  const { isFirstItemVisible, scrollPrev } =
+  const { scrollPrev } =
     React.useContext(VisibilityContext);
 
   return (
     <Button
-      disabled={isFirstItemVisible}
       onClick={() => scrollPrev()}
-      color="default"
-      className={`mr-2 h-full left-arrow ${
-        isFirstItemVisible ? "hidden" : "text-black"
-      }`}
+      className={`h-full bg-transparent`}
       isIconOnly
     >
       <IoIosArrowBack className="w-6 h-6" />
@@ -60,16 +65,12 @@ function LeftArrow() {
 }
 
 function RightArrow() {
-  const { isLastItemVisible, scrollNext } = React.useContext(VisibilityContext);
+  const { scrollNext } = React.useContext(VisibilityContext);
 
   return (
     <Button
-      disabled={isLastItemVisible}
-      color="default"
       onClick={() => scrollNext()}
-      className={`h-full ml-2 right-arrow ${
-        isLastItemVisible ? "hidden" : "text-black"
-      }`}
+      className={`h-full bg-transparent`}
       isIconOnly
     >
       <IoIosArrowForward className="w-6 h-6" />
@@ -91,7 +92,7 @@ function RowCard({ item, isMobile }) {
       onClick={() => {
         onClick();
       }}
-      className="w-64 md:w-40 ml-3"
+      className="w-40 ml-3"
     >
       <div
         className={`relative group ${
@@ -100,31 +101,22 @@ function RowCard({ item, isMobile }) {
             : "hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
         }`}
       >
-        <div className="bg-black rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+        <div className="rounded-lg overflow-hidden cursor-pointer">
           <Image
             src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
             alt={item.name || item.title}
-            className="w-64 h-96 md:w-40 md:h-60 object-cover"
+           className="w-40 h-60 object-cover"
             fallbackSrc="/not-found.png"
           />
-          {!isMobile && (
-            <div
-              style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
-              className="absolute inset-0 flex flex-col items-center justify-center opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
+          <div
+              className="flex flex-col items-center justify-center duration-300"
             >
-              <h3 className="text-2xl font-semibold text-center text-white">
+              <h3 className="truncate font-semibolds w-36 py-2 text-base sm:text-base md:text-lg lg:text-xl capitalize text-center text-white">
                 {item.name || item.title}
               </h3>
-              <Button
-                onClick={() => onClick()}
-                className="bg-blue text-white rounded-full px-4 py-2 transition-all duration-300"
-                color="danger"
-                variant="flat"
-              >
-                Watch Now
-              </Button>
+              
             </div>
-          )}
+          
         </div>
       </div>
     </div>

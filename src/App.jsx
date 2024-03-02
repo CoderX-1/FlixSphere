@@ -9,12 +9,15 @@ import React, { useEffect, useState } from "react";
 const useFetchData = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
-    trending_tv: null,
-    trending_movies: null,
     trending: null,
     airing_today: null,
     popular: null,
-    anime: null,
+    animation: null,
+    horror: null,
+    action: null,
+    comedy: null,
+    romance: null,
+    documentary: null,
   });
 
   useEffect(() => {
@@ -48,19 +51,19 @@ const App = () => {
         <>
           <Header />
           <HeroSection />
-          <div className="mt-[540px] lg:mt-[450px] md:mt-[530px]">
-            {data.trending_movies && (
-              <Row items={data.trending_movies} title="Trending Movies" />
-            )}
+          <div>
+            {data.trending && 
+              <Row items={data.trending} title="Trending" link="/Trending" />
+            }
           </div>
-          {data.trending_tv && (
-            <Row items={data.trending_tv} title="Trending TV" />
-          )}
-          {data.anime && <Row items={data.anime} title="Anime" />}
-          {data.popular && <Row items={data.popular} title="Popular" />}
-          {data.airing_today && (
-            <Row items={data.airing_today} title="Airing Today" />
-          )}
+          {data.popular && <Row items={data.popular} title="Popular" link="/Popular" />}
+          {data.animation && <Row items={data.animation} title="Top Kids" link="/Anime" />}
+          
+          {data.horror && <Row items={data.horror} title="Top Horror" link="/Horror" />}
+          
+          {data.documentary && 
+            <Row items={data.documentary} title="Top Documentaries" link="Documentary"/>
+          }
         </>
       )}
     </>

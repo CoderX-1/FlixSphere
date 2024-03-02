@@ -33,26 +33,27 @@ const HeroSection = () => {
 
   return (
     <div>
-      <div className="h-screen absolute top-0 z-20">
+      <div >
         {randomMovie && (
           <Card radius="none">
             <Image
               src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
-              className="z-0 w-full md:h-full h-[600px] object-cover"
+              className="z-0 w-full h-[80vh] object-cover"
               removeWrapper
               radius="none"
             />
-            <div className="z-10 w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent to-[#202020]"></div>
-            <CardFooter className="items-start flex-col overflow-hidden py-1 absolute bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+            <div className="z-10 w-full h-[80vh] absolute justify-center bg-gradient-to-b from-transparent to-[#202020]"></div>
+            <CardFooter className="items-start w-4/6 flex-col overflow-hidden bottom-10 py-1 absolute ml-1 z-10">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white">
                 {randomMovie.title || randomMovie.name}
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-400">
-                {randomMovie.overview}
+                {randomMovie.overview.substring(0, 155)}...
               </p>
               <div className="flex mt-4">
-                <Button color="danger" size="lg" varient="flat" isIconOnly>
-                  <FaPlay
+              <Button
+                    color="danger"
+                    startContent={<FaPlay />}
                     onClick={() => {
                       if (randomMovie.first_air_date) {
                         navigate(`/watch/tv/${randomMovie.id}/1/1`);
@@ -60,12 +61,13 @@ const HeroSection = () => {
                         navigate(`/watch/movie/${randomMovie.id}`);
                       }
                     }}
-                  />
-                </Button>
+                  >
+                    Play
+                  </Button>
+                
                 <Button
                   className="ml-2"
                   color="danger"
-                  size="lg"
                   varient="flat"
                   onClick={() => {
                     if (randomMovie.first_air_date) {

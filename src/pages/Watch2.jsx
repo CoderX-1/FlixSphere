@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const Watch = () => {
+const Watch2 = () => {
   const { type, id, season, episode } = useParams();
 
   useEffect(() => {
@@ -45,8 +45,8 @@ const Watch = () => {
       allowFullScreen
       src={
         type === "movie"
-          ? ` https://embed.smashystream.com/playere.php?tmdb=${id}`
-          : ` https://embed.smashystream.com/playere.php?tmdb=${id}&tmdb=1&s=${season}&e=${episode}`
+          ? ` https://embed.smashystream.com/playere.php?tmdb=${id}&dplayer=D`
+          : ` https://embed.smashystream.com/playere.php?tmdb=${id}_ID&season=${season}&episode=${episode}&d  player=D`
       }
       width="100%"
       height="100%"
@@ -58,4 +58,4 @@ const Watch = () => {
   );
 };
 
-export default Watch;
+export default Watch2;
