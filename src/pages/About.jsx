@@ -2,7 +2,7 @@ import Header from "../components/Navbar";
 import { TMDB_API_KEY } from "../services/Tmdb";
 import { Chip, Button, Image } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
-// afaf?\
+
 const About = () => {
   const [developerPicks, setDeveloperPicks] = useState([]);
 
