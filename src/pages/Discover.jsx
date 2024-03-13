@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import { TMDB_API_KEY, endpoints, TMDB_URL } from "../services/Tmdb";
 import { useState, useEffect } from "react";
 import axios from "axios";
