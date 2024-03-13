@@ -53,11 +53,11 @@ const VerticalCard = ({ items, title }) => {
               </p>
             }
           >
-            <div className="mt-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="m-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {results.map((result) => (
                 <Card
                   key={result.id}
-                  className="cursor-pointer hover:opacity-75 transition-opacity duration-300"
+                  className="transition ease-in-out hover:-translate-y-1 hover:scale-105 cursor-pointer hover:opacity-75 py-1"
                 >
                   <Image
                     onClick={() =>

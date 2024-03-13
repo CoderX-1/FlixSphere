@@ -45,8 +45,8 @@ const Watch2 = () => {
       allowFullScreen
       src={
         type === "movie"
-          ? ` https://embed.smashystream.com/playere.php?tmdb=${id}&dplayer=D`
-          : ` https://embed.smashystream.com/playere.php?tmdb=${id}_ID&season=${season}&episode=${episode}&dplayer=D`
+          ? `https://vidsrc.to/embed/movie/${id}`
+          : `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
       }
       width="100%"
       height="100%"

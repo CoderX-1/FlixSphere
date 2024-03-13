@@ -2,6 +2,7 @@ import Row from "../components/CastRow";
 import Spinner from "../components/Loading";
 import MovieRow from "../components/MovieRow";
 import Navbar from "../components/Navbar";
+import PlayerModal from "../components/Playermodal";
 import { auth, db } from "../services/Firebase";
 import { TMDB_URL, TMDB_API_KEY } from "../services/Tmdb";
 import {
@@ -51,6 +52,12 @@ const InfoPage = () => {
   const [showFullText, setShowFullText] = useState(false);
   const [similar, setSimilar] = useState([]);
   const navigate = useNavigate();
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
 
   const toggleOverview = (episodeId) => {
     setExpandedOverview((prevState) => ({
@@ -203,12 +210,14 @@ const InfoPage = () => {
             toast.destroy();
           },
         },
+        timeout: 3000,
         cancel: "Cancel",
         type: "dark",
       });
     }
     if (!userID) {
       return createToast("Please wait. Try again after 2 seconds.", {
+        timeout: 2000,
         cancel: "Cancel",
         type: "dark",
       });
@@ -275,18 +284,20 @@ const InfoPage = () => {
             className="z-0 w-[100vw] h-[78vh] object-cover"
             radius="none"
           />
-          <div className="z-10 w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent to-[#202020]"></div>
-          <div className="md:mt-3 mt-[200px]">
+          <div className="z-10 w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent to-[#050505]"></div>
+          <div className="flex md:flex-row flex-col  overflow-hidden absolute bottom-1 w-full ml-1 z-10">
+            {" "}
+            {/*md:mt-3 mt-[200px] */}
             <CardFooter
               radius="none"
-              className="flex md:flex-row flex-col items-start overflow-hidden py-1 absolute bottom-1 w-[calc(100%_-_8px)] ml-1 z-10"
+              className="flex md:flex-row flex-col justify-center items-center"
             >
-              <div className="md:w-1/3 flex justify-center w-full h-full md:pr-8 mb-4 md:mb-0">
+              <div className="flex md:pr-8 mb-4 md:mb-0">
                 <Image
                   src={`https://image.tmdb.org/t/p/w300/${details.poster_path}`}
                   alt="Poster"
                   radius="lg"
-                  className="w-48 md:w-64 shadow-lg mx-auto md:mx-0 md:mt-0 mt-4"
+                  className="w-48 md:w-64 shadow-lg"
                 />
               </div>
               <div className="md:w-2/3">
@@ -299,17 +310,13 @@ const InfoPage = () => {
                   {type === "movie" ? details.title : details.name}
                 </h1>
                 <div className="mb-4">
-                 
                   <p className="text-base md:text-lg">
                     {details.overview.length > 155 && !showFullText
                       ? `${details.overview.substring(0, 155)}...`
                       : details.overview}
                     {details.overview.length > 155 && (
                       <Button
-                        className="ml-1"
-                        size="md"
-                        color="danger"
-                        variant="ghost"
+                        className="p-0 bg-transparent outline-0 text-gray-400"
                         onClick={toggleText}
                       >
                         {showFullText ? "Read Less" : "Read More"}
@@ -363,40 +370,12 @@ const InfoPage = () => {
                   </p>
                 )}
                 <div className="flex">
-                  <Button
-                    variant="shadow"
+                  <Button variant="shadow"
                     color="danger"
                     radius="full"
-                    startContent={<FaPlay />}
-                    onClick={() => {
-                      if (type === "tv") {
-                        navigate(`/watch/${type}/${id}/${selectedSeason}/1`);
-                      } else {
-                        navigate(`/watch/${type}/${id}`);
-                      }
-                    }}
-                  >
-                    Play
-                  </Button>
-                  <Button
-                  className="ml-1"
-                    variant="shadow"
-                    color="danger"
-                    radius="full"
-                    startContent={<FaPlay />}
-                    onClick={() => {
-                      if (type === "tv") {
-                        navigate(`/watch2/${type}/${id}/${selectedSeason}/1`);
-                      } else {
-                        navigate(`/watch2/${type}/${id}`);
-                      }
-                    }}
-                  >
-                    Play
-                    <span className="text-xs text-green-700">
-                SERVER 2
-              </span>
-                  </Button>
+                    startContent={<FaPlay />} onClick={toggleModal}>Play</Button>
+                  <PlayerModal isOpen={modalOpen} toggleModal={toggleModal} />
+                  
                   {watchlistLoading ? (
                     <Button
                       disabled
@@ -530,30 +509,24 @@ const InfoPage = () => {
         </div>
       )}
       <div>
-        <Tabs aria-label="Similar" variant="underlined">
-          <Tab
-            className="text-2xl ml-2 text-white mb-2"
-            key="similar"
-            title="Similar"
-          >
-            <MovieRow items={similar} />
-          </Tab>
-          <Tab
-            className="text-2xl text-white mb-2"
-            key="recommendations"
-            title="Recommendations"
-          >
-            <MovieRow items={recommendations} />
-          </Tab>
-        </Tabs>
+        <div>
+          
+        <div>
+          <MovieRow items={similar} title="Similar" />
+        </div>
+        </div>
+        <div>
+        <div>
+        <MovieRow items={recommendations} title="Recommendations" />
+        </div>
+        </div>
+           
       </div>
     </div>
   );
 };
 
 export default InfoPage;
-
-// import Row from "../components/CastRow";
 // import Spinner from "../components/Loading";
 // import MovieRow from "../components/MovieRow";
 // import Navbar from "../components/Navbar";

@@ -1,13 +1,17 @@
 import Loading from "../components/Loading";
 import { auth, db } from "../services/Firebase";
+import { TMDB_API_KEY } from "../services/Tmdb";
+import { Button, Input } from "@nextui-org/react";
+import axios from "axios";
 import Filter from "bad-words";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { createToast } from "vercel-toast";
 
 const SignUp = () => {
@@ -15,7 +19,9 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
+  const [backdrop, setBackdrop] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const checkForBadWords = (text) => {
     const filter = new Filter();
@@ -28,6 +34,7 @@ const SignUp = () => {
     if (!username || !email || !password) {
       return createToast("Please fill in all the fields.", {
         cancel: "Cancel",
+        timeout: 3000,
         type: "error",
       });
     } else {
@@ -45,7 +52,26 @@ const SignUp = () => {
           const user = userCred.user;
           const colRef = doc(db, "users", user.uid);
           await setDoc(colRef, { username: username });
-          navigate("/");
+          sendEmailVerification(user, {
+            url: `${import.meta.env.VITE_WEBSITE_URL}/signup?verified=true`,
+          })
+            .then(() => {
+              return createToast(
+                "We Have Sent You An Email For Verification.",
+                {
+                  cancel: "Hide",
+                  timeout: 3000,
+                  type: "info",
+                }
+              );
+            })
+            .catch((error) => {
+              return createToast(error.message, {
+                cancel: "Cancel",
+                type: "error",
+                timeout: 3000,
+              });
+            });
         } catch (error) {
           if (error.message.includes("email-already-in-use")) {
             return createToast("The Email Is Already Exists.", {
@@ -56,6 +82,7 @@ const SignUp = () => {
                   toast.destroy();
                 },
               },
+              timeout: 3000,
               cancel: "Cancel",
               type: "dark",
             });
@@ -77,75 +104,100 @@ const SignUp = () => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/299536/images?api_key=${TMDB_API_KEY}`
+      )
+      .then((response) => {
+        setBackdrop(
+          "https://image.tmdb.org/t/p/original" +
+            response.data.backdrops[0].file_path
+        );
+      });
+
+    const params = new URLSearchParams(location.search);
+    if (params.get("verified") === "true") {
+      createToast("Your Email Has Been Verified.", {
+        cancel: "Cancel",
+        timeout: 3000,
+        type: "success",
+      });
+    }
+  }, []);
+
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
-        <div className="p-4 flex flex-col items-center justify-center min-h-screen bg-[#202020]">
-          <h1 className="text-white text-4xl font-bold mb-6 mt-2">SignUp</h1>
-          <form className="w-full max-w-md">
-            <label
-              htmlFor="username"
-              className="block text-white font-semibold mb-1"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-2 rounded bg-[#1e1c1c] text-white mb-4"
-              required={true}
-            />
-            <label
-              htmlFor="email"
-              className="block text-white font-semibold mb-1"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 rounded bg-[#1e1c1c] text-white mb-4"
-              required={true}
-            />
+        <div
+          style={{
+            position: "relative",
+            backgroundImage: `url(${backdrop})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          className={`p-4 flex flex-col items-center justify-center min-h-screen`}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundImage:
+                "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)",
+            }}
+          ></div>
 
-            <label
-              htmlFor="password"
-              className="block text-white font-semibold mb-1"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 rounded bg-[#1e1c1c] text-white mb-6"
-              required={true}
-            />
+          <div className="relative z-10 w-full max-w-md flex flex-col items-center">
+            <h1 className="text-white text-4xl font-bold mb-6 mt-2">SignUp</h1>
+            <form className="w-full">
+              <Input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full px-4 py-2 rounded text-white mb-2"
+                required={true}
+              />
+              <Input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-2 rounded text-white mb-2"
+                required={true}
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-2 rounded text-white mb-4"
+                required={true}
+              />
 
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className="w-full py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600 transition duration-300"
-            >
-              SignUp
-            </button>
-          </form>
-          <p className="text-white mt-4">
-            Already Have An Account?{" "}
-            <Link to="/login" className="text-blue-500">
-              Login
-            </Link>
-          </p>
+              <Button
+                type="submit"
+                onClick={handleSubmit}
+                color="primary"
+                className="w-[95%]"
+              >
+                SignUp
+              </Button>
+            </form>
+          </div>
+          <div className="relative z-10 text-white mt-4">
+            <p>
+              Already Have An Account?{" "}
+              <Link to="/login" className="text-blue-500">
+                Login
+              </Link>
+            </p>
+          </div>
         </div>
       )}
     </>

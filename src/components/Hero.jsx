@@ -42,7 +42,7 @@ const HeroSection = () => {
               removeWrapper
               radius="none"
             />
-            <div className="z-10 w-full h-[80vh] absolute justify-center bg-gradient-to-b from-transparent to-[#202020]"></div>
+            <div className="z-10 w-full h-[80vh] absolute justify-center bg-gradient-to-l from-transparent to-[#050505]"></div>
             <CardFooter className="items-start w-4/6 flex-col overflow-hidden bottom-10 py-1 absolute ml-1 z-10">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white">
                 {randomMovie.title || randomMovie.name}
@@ -87,6 +87,7 @@ const HeroSection = () => {
       </div>{" "}
     </div>
   );
+  
 };
 
 export default HeroSection;

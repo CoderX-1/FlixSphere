@@ -9,14 +9,15 @@ import SearchPage from "./pages/Search";
 import SignUp from "./pages/SignUp";
 import Watch from "./pages/Watch";
 import Watch2 from "./pages/Watch2";
-import Popular from "./pages/Popular";
-import Horror from "./pages/Horror";
+import Watch3 from "./pages/Watch3";
+// import Popular from "./pages/Popular";
+// import Horror from "./pages/Horror";
 import WatchlistPage from "./pages/Watchlist";
 import NotFound from "./pages/NotFound"; // Import the custom 404 page component
-import Discover from "./pages/Discover";
-import Documentary from "./pages/Documentary";
-import Trending from "./pages/Trending";
-import Anime from "./pages/Anime";
+// import Discover from "./pages/Discover";
+// import Documentary from "./pages/Documentary";
+// import Trending from "./pages/Trending";
+// import Anime from "./pages/Anime";
 // Styles
 import "./styles/index.css";
 import { NextUIProvider } from "@nextui-org/react";
@@ -59,37 +60,41 @@ const routes = [
   },
   {
     path: "/watch2/:type/:id/:season?/:episode?",
-    element: <Watch2 />,
+    element: <Watch2 />
+  },
+  {
+    path: "/Watch3/:type/:id/:season?/:episode?",
+    element: <Watch3 />,
   },
   {
     path: "/watchlist",
     element: <WatchlistPage />,
   },
-  {
-    path: "/discover",
-    element: <Discover />,
-  },
-  {
-    path: "/Trending",
-    element: <Trending />,
-  },
+  // {
+  //   path: "/discover",
+  //   element: <Discover />,
+  // },
+  // {
+  //   path: "/Trending",
+  //   element: <Trending />,
+  // },
   
-  {
-    path: "/Anime",
-    element: <Anime />,
-  },
-  {
-    path: "/Popular",
-    element: <Popular />,
-  },
-  {
-    path: "/Documentary",
-    element: <Documentary />,
-  },
-  {
-    path: "/Horror",
-    element: <Horror />,
-  },
+  // {
+  //   path: "/Anime",
+  //   element: <Anime />,
+  // },
+  // {
+  //   path: "/Popular",
+  //   element: <Popular />,
+  // },
+  // {
+  //   path: "/Documentary",
+  //   element: <Documentary />,
+  // },
+  // {
+  //   path: "/Horror",
+  //   element: <Horror />,
+  // },
   
   // Add the 404 route at the end
   {
