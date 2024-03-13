@@ -113,12 +113,14 @@ const Login = () => {
       })
         .then(() => {
           return createToast("We have sent you an email", {
+            timeout: 3000,
             cancel: "Cancel",
             type: "info",
           });
         })
         .catch((error) => {
           return createToast(error.message, {
+            timeout: 3000,
             cancel: "Cancel",
             type: "error",
           });
