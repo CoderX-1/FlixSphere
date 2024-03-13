@@ -14,7 +14,7 @@ import Watch3 from "./pages/Watch3";
 // import Horror from "./pages/Horror";
 import WatchlistPage from "./pages/Watchlist";
 import NotFound from "./pages/NotFound"; // Import the custom 404 page component
-// import Discover from "./pages/Discover";
+import Discover from "./pages/Discover";
 // import Documentary from "./pages/Documentary";
 // import Trending from "./pages/Trending";
 // import Anime from "./pages/Anime";
