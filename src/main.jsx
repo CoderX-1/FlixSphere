@@ -70,10 +70,10 @@ const routes = [
     path: "/watchlist",
     element: <WatchlistPage />,
   },
-  // {
-  //   path: "/discover",
-  //   element: <Discover />,
-  // },
+  {
+    path: "/discover",
+    element: <Discover />,
+  },
   // {
   //   path: "/Trending",
   //   element: <Trending />,
