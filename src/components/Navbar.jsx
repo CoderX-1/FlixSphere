@@ -88,65 +88,6 @@ const Header = () => {
       "The delete functions is still in development. It will be available soon!"
     );
 
-    // if (user) {
-    //   const confirm = window.confirm(
-    //     "Are you sure you want to delete your account?"
-    //   );
-    //   if (!confirm) {
-    //     return;
-    //   } else {
-    //     const password = prompt("Please enter your password");
-    //     if (!password) {
-    //       return;
-    //     }
-    //     const credential = EmailAuthProvider.credential(
-    //       auth.currentUser.email,
-    //       password
-    //     );
-    //     reauthenticateWithCredential(auth.currentUser, credential)
-    //       .then(async () => {
-    //         const docRef = doc(db, "users", auth.currentUser.uid);
-    //         deleteDoc(docRef)
-    //           .then(() => {
-    //             console.log("User infos successfully deleted!");
-    //           })
-    //           .catch((error) => {
-    //             alert(error.message);
-    //           });
-    //         const q = query(
-    //           collection(db, "watchlist"),
-    //           where("userID", "==", auth.currentUser.uid)
-    //         );
-    //         const querySnapshot = await getDocs(q);
-    //         querySnapshot.forEach(async (doc) => {
-    //           const docRef = doc(db, "watchlist", doc.id);
-    //           await deleteDoc(docRef)
-    //             .then(() => {
-    //               console.log("Watchlist successfully deleted!");
-    //             })
-    //             .catch((error) => {
-    //               alert(error.message);
-    //             });
-    //         });
-    //         deleteUser(auth.currentUser)
-    //           .then(() => {
-    //             signOut(auth);
-    //             createToast("Successfully deleted your account", {
-    //               type: "success",
-    //               cancel: "Ok",
-    //             });
-
-    //             navigate("/");
-    //           })
-    //           .catch((error) => {
-    //             alert(error.message);
-    //           });
-    //       })
-    //       .catch((error) => {
-    //         alert(error.message);
-    //       });
-    //   }
-    // }
   };
 
   return (
