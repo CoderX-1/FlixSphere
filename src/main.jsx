@@ -11,7 +11,7 @@ import Watch from "./pages/Watch";
 import Watch2 from "./pages/Watch2";
 import Watch3 from "./pages/Watch3";
 // import Popular from "./pages/Popular";
-// import Horror from "./pages/Horror";
+import Horror from "./pages/Horror";
 import WatchlistPage from "./pages/Watchlist";
 import NotFound from "./pages/NotFound"; // Import the custom 404 page component
 import Discover from "./pages/Discover";
@@ -91,10 +91,10 @@ const routes = [
   //   path: "/Documentary",
   //   element: <Documentary />,
   // },
-  // {
-  //   path: "/Horror",
-  //   element: <Horror />,
-  // },
+  {
+    path: "/Horror",
+    element: <Horror />,
+  },
   
   // Add the 404 route at the end
   {
