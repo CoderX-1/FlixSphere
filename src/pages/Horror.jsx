@@ -1,5 +1,5 @@
 import React from 'react'
-import VerticalCard from "@/components/verticalCard";
+import VerticalCard from "@/components/VerticalCard";
 import { endpoints, TMDB_URL } from "../services/Tmdb";
 
 const Page = ({ items, title, link }) => {
