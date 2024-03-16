@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import Watch from "./pages/Watch";
 import Watch2 from "./pages/Watch2";
 import Watch3 from "./pages/Watch3";
+// import Watch4 from "./pages/Watch4";
 // import Popular from "./pages/Popular";
 // import Horror from "./pages/Horror";
 import WatchlistPage from "./pages/Watchlist";
@@ -66,6 +67,10 @@ const routes = [
     path: "/Watch3/:type/:id/:season?/:episode?",
     element: <Watch3 />,
   },
+  // {
+  //   path: "/Watch4/:type/:id/:season?/:episode?",
+  //   element: <Watch4 />,
+  // },
   {
     path: "/watchlist",
     element: <WatchlistPage />,

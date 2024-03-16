@@ -45,8 +45,8 @@ const Watch2 = () => {
       allowFullScreen
       src={
         type === "movie"
-          ? `https://vidsrc.to/embed/movie/${id}`
-          : `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+          ? ` https://embed.dramahub.link/movie/${id}`
+          : ` https://embed.dramahub.link/tv/${id}/${season}/${episode}`
       }
       width="100%"
       height="100%"

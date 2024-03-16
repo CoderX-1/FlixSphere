@@ -100,6 +100,7 @@ const PlayerModal = ({ isOpen, toggleModal }) => {
               >
                 <span>Player 2</span>
               </Button>
+              
               <Button 
                className="hover:bg-transparent hover:border-1 p-0"
                 radius="md"
