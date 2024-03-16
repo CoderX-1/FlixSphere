@@ -11,6 +11,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaPlay, FaInfo, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import "./SliderStyles.css";
 
 const HeroSection = () => {
   const [randomMovie, setRandomMovie] = useState(null);
@@ -35,7 +36,7 @@ const HeroSection = () => {
     <div>
       <div >
         {randomMovie && (
-          <Card radius="none">
+          <Card radius="none" className="swiper">
             <Image
               src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
               className="z-0 w-full h-[80vh] object-cover"
@@ -44,10 +45,10 @@ const HeroSection = () => {
             />
             <div className="z-10 w-full h-[80vh] absolute justify-center bg-gradient-to-l from-transparent to-[#050505]"></div>
             <CardFooter className="items-start w-4/6 flex-col overflow-hidden bottom-10 py-1 absolute ml-1 z-10">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white">
+              <h1 className="smtruncate text-3xl md:text-5xl lg:text-6xl font-extrabold text-white">
                 {randomMovie.title || randomMovie.name}
               </h1>
-              <p className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-400">
+              <p className="smtruncate text-lg md:text-xl lg:text-2xl font-semibold text-gray-400">
                 {randomMovie.overview.substring(0, 155)}...
               </p>
               <div className="flex mt-4">
