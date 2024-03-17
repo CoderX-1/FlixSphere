@@ -56,10 +56,10 @@ function LeftArrow() {
   return (
     <Button
       onClick={() => scrollPrev()}
-      className={`h-full bg-transparent`}
+      className={`h-60 left-3 absolute bg-transparent z-20 rounded-none rounded-tl-xl rounded-bl-xl`}
       isIconOnly
     >
-      <IoIosArrowBack className="w-6 h-6" />
+      <IoIosArrowBack className="w-8 h-8" />
     </Button>
   );
 }
@@ -70,10 +70,10 @@ function RightArrow() {
   return (
     <Button
       onClick={() => scrollNext()}
-      className={`h-full bg-transparent`}
+      className={`h-60 absolute right-[0.1rem] z-10 bg-[#15161533] rounded-none rounded-tr-xl rounded-br-xl`}
       isIconOnly
     >
-      <IoIosArrowForward className="w-6 h-6" />
+      <IoIosArrowForward className="w-8 h-8" />
     </Button>
   );
 }
