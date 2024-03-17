@@ -8,13 +8,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const Horror = ({ items, title }) => {
+const Animation = ({ items, title }) => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${TMDB_URL}${endpoints.horror}`, {
+      const response = await axios.get(`${TMDB_URL}${endpoints.animation}`, {
         params: {
           api_key: TMDB_API_KEY,
           page: page,
@@ -40,7 +40,7 @@ const Horror = ({ items, title }) => {
     <div className="text-white">
       <Navbar />
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">Horror</h1>
+        <h1 className="text-3xl font-bold mb-4">Animation</h1>
         <div className="relative mb-4">
           <InfiniteScroll
             dataLength={results.length}
@@ -90,4 +90,4 @@ const Horror = ({ items, title }) => {
   );
 };
 
-export default Horror;
+export default Animation;

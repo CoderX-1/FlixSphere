@@ -57,7 +57,7 @@ const App = () => {
             }
           </div>
           {data.popular && <Row items={data.popular} title="Popular" link="/Popular" />}
-          {data.animation && <Row items={data.animation} title="Top Kids" link="/Anime" />}
+          {data.animation && <Row items={data.animation} title="Top Kids" link="/Animation" />}
           
           {data.horror && <Row items={data.horror} title="Top Horror" link="/Horror" />}
           
