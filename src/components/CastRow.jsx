@@ -50,15 +50,11 @@ function LeftArrow() {
 
   return (
     <Button
-      disabled={isFirstItemVisible}
       onClick={() => scrollPrev()}
-      color="default"
-      className={`mr-2 h-full left-arrow ${
-        isFirstItemVisible ? "hidden" : "text-black"
-      }`}
+      className={`h-60 left-[-0.25rem] absolute bg-transparent z-20 rounded-none w-12`}
       isIconOnly
     >
-      <IoIosArrowBack className="w-6 h-6" />
+      <IoIosArrowBack className="w-8 h-8" />
     </Button>
   );
 }
@@ -71,12 +67,10 @@ function RightArrow() {
       disabled={isLastItemVisible}
       color="default"
       onClick={() => scrollNext()}
-      className={`h-full ml-2 right-arrow ${
-        isLastItemVisible ? "hidden" : "text-black"
-      }`}
+      className={`h-60 absolute right-[0.001rem] z-10 bg-[#15161533] rounded-none w-10`}
       isIconOnly
     >
-      <IoIosArrowForward className="w-6 h-6" />
+      <IoIosArrowForward className="w-8 h-8" />
     </Button>
   );
 }
@@ -93,7 +87,7 @@ function RowCard({ item, isMobile, navigate }) {
       onClick={() => {
         onClick();
       }}
-      className="w-64 md:w-40 ml-3"
+      className="w-40 mx-3"
     >
       <div
         className={`relative group ${
@@ -102,12 +96,12 @@ function RowCard({ item, isMobile, navigate }) {
             : "hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
         }`}
       >
-        <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+        <div className="rounded-lg overflow-hidden cursor-pointer">
           <Card isFooterBlurred radius="lg" className="border-none">
             <Image
               src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
               alt={item.name}
-              className="w-60 h-90 md:w-40 md:h-60 object-cover"
+              className="w-40 h-60 object-cover"
               fallbackSrc="/not-found.png"
             />
             <CardFooter className="before:bg-white/10 border-white/20 border-1 overflow-hidden p-2 absolute before:rounded-xl rounded-large bottom-3 text-center md:w-[100px] w-[200px] ml-4 shadow-small z-10">
