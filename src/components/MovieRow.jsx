@@ -56,7 +56,7 @@ function LeftArrow() {
   return (
     <Button
       onClick={() => scrollPrev()}
-      className={`h-60 left-3 absolute bg-transparent z-20 rounded-none rounded-tl-xl rounded-bl-xl`}
+      className={`h-60 left-[-0.25rem] absolute bg-transparent z-20 rounded-none w-12`}
       isIconOnly
     >
       <IoIosArrowBack className="w-8 h-8" />
@@ -70,7 +70,7 @@ function RightArrow() {
   return (
     <Button
       onClick={() => scrollNext()}
-      className={`h-60 absolute right-[0.1rem] z-10 bg-[#15161533] rounded-none rounded-tr-xl rounded-br-xl`}
+      className={`h-60 absolute right-[0.001rem] z-10 bg-[#15161533] rounded-none w-10`}
       isIconOnly
     >
       <IoIosArrowForward className="w-8 h-8" />
@@ -92,7 +92,7 @@ function RowCard({ item, isMobile }) {
       onClick={() => {
         onClick();
       }}
-      className="w-40 ml-3"
+      className="w-40 mx-3"
     >
       <div
         className={`relative group ${
