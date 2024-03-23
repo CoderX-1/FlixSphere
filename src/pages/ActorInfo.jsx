@@ -72,7 +72,7 @@ const ActorInfoPage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-dark mt-5 md:mt-10 text-white py-10">
+      <div className="bg-dark  md:mt-10 text-white pt-3">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-1/2">

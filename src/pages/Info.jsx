@@ -302,9 +302,9 @@ const InfoPage = () => {
               </div>
               <div className="md:w-2/3">
                 <h1
-                  onClick={() => {
-                    window.location.href = details.homepage;
-                  }}
+                  // onClick={() => {
+                  //   window.location.href = details.homepage;
+                  // }}
                   className="text-3xl md:text-5xl font-bold mb-2"
                 >
                   {type === "movie" ? details.title : details.name}
@@ -527,7 +527,7 @@ const InfoPage = () => {
 };
 
 export default InfoPage;
-// import Spinner from "../components/Loading";
+
 // import MovieRow from "../components/MovieRow";
 // import Navbar from "../components/Navbar";
 // import { auth, db } from "../services/Firebase";
