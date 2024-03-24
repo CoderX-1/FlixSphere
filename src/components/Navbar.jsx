@@ -100,20 +100,20 @@ const Header = () => {
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden text-white"
+          className="md:hidden text-white"
         />
         <NavbarBrand>
           <Link to="/">
             <img
               src="/logo.png"
               alt="Logo"
-              className="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 object-contain"
+              className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain"
             />
           </Link>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent
-        className="hidden text-white sm:flex gap-4"
+        className="hidden text-white md:flex gap-4"
         justify="center"
       >
         <NavbarItem className="text-white">
@@ -149,9 +149,9 @@ const Header = () => {
             <Button color="primary" variant="flat" onClick={handleSignOut}>
               Sign Out
             </Button>
-            <Button color="primary" variant="flat" onClick={handleDelete}>
+            {/* <Button color="primary" variant="flat" onClick={handleDelete}>
               <MdDelete /> Delete
-            </Button>
+            </Button> */}
           </NavbarItem>
         ) : (
           <NavbarItem>
