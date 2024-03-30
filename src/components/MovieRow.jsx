@@ -35,7 +35,7 @@ const Row = ({ items, title, link }) => {
       </div>
       </div>
       {loading ? (
-        <div className="w-full h-10 flex items-center justify-start mb-4 ml-3">
+        <div className="w-full h-10 flex items-center justify-center mb-4">
           <Spinner size="lg" color="default" />
         </div>
       ) : (
