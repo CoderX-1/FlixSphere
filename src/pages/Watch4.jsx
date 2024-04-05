@@ -45,8 +45,8 @@
 //       allowFullScreen
 //       src={
 //         type === "movie"
-//           ? `https://vidsrc.to/embed/movie/${id}`
-//           : `https://vidsrc.to/embed/tv/${id}/${season}/${episode}`
+//           ? `https://embed.smashystream.com/playere.php?tmdb=${id}&dplayer=D`
+//           : `tps://embed.smashystream.com/playere.php?tmdb=${id}_ID&season=${season}&episode=${episode}&dplayer=D`
 //       }
 //       width="100%"
 //       height="100%"
