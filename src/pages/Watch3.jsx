@@ -38,7 +38,7 @@ const Watch2 = () => {
         document.msExitFullscreen();
       }
     };
-  }, []); // Empty dependency array to run this effect only once
+  }, []);
 
   return (
     <iframe
