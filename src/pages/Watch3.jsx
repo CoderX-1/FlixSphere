@@ -45,8 +45,8 @@ const Watch2 = () => {
       allowFullScreen
       src={
         type === "movie"
-          ? ` https://embed.dramahub.link/movie/${id}`
-          : ` https://embed.dramahub.link/tv/${id}/${season}/${episode}`
+          ? ` https://embed.nxstreaming.site/movie/tmdb/${id}/`
+          : ` https://embed.nxstreaming.site/tv/tmdb/${id}/S${season}/E${episode}/`
       }
       width="100%"
       height="100%"
