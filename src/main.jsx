@@ -19,7 +19,6 @@ import Discover from "./pages/Discover";
 import Documentary from "./pages/Documentary";
 import Trending from "./pages/Trending";
 import Animation from "./pages/Animation";
-import Netflix from "./pages/Netflix";
 // import Anime from "./pages/Anime";
 // Styles
 import "./styles/index.css";
@@ -81,10 +80,7 @@ const routes = [
     path: "/discover",
     element: <Discover />,
   },
-  {
-    path: "/Netflix",
-    element: <Netflix />,
-  },
+
   {
     path: "/Trending",
     element: <Trending />,

@@ -51,11 +51,7 @@ const App = () => {
         <>
           <Header />
           <HeroSection />
-          <div>
-            {data.netflix && 
-              <Row items={data.netflix} title="Netflix Originals" link="/Netflix" />
-            }
-          </div>
+          
           <div>
             {data.trending && 
               <Row items={data.trending} title="Trending" link="/Trending" />
