@@ -88,12 +88,16 @@ const WatchlistPage = () => {
   return (
     <>
       <Navbar />
-      <div className="p-2">
+      <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold mb-6">My Watchlist</h1>
         <div>
           {watchlistLoading ? (
             <div className="flex items-center justify-center">
               <NextSpinner color="primary" size="xl" className="mb-6 mt-2" />
+            </div>
+          ) : watchlistData.length === 0 ? (
+            <div className="flex items-center justify-center">
+              <p className="text-gray-500">Your watchlist is currently empty.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -151,6 +155,7 @@ const WatchlistPage = () => {
       </div>
     </>
   );
+  
 };
 
 export default WatchlistPage;

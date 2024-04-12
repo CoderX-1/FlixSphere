@@ -40,7 +40,7 @@ const VerticalCard = ({ items, title }) => {
     <div className="text-white">
       <Navbar />
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">{title}</h1>
+        <h1 className="text-3xl font-bold mb-4 pl-4">Discover</h1>
         <div className="relative mb-4">
           <InfiniteScroll
             dataLength={results.length}
@@ -53,7 +53,7 @@ const VerticalCard = ({ items, title }) => {
               </p>
             }
           >
-            <div className="m-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {results.map((result) => (
                 <Card
                   key={result.id}

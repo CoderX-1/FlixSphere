@@ -8,13 +8,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const Documentary = ({ items, title }) => {
+const Airing = ({ items, title }) => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${TMDB_URL}${endpoints.documentary}`, {
+      const response = await axios.get(`${TMDB_URL}${endpoints.airing_today}`, {
         params: {
           api_key: TMDB_API_KEY,
           page: page,
@@ -40,7 +40,7 @@ const Documentary = ({ items, title }) => {
     <div className="text-white">
       <Navbar />
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">Documentary</h1>
+        <h1 className="text-3xl font-bold mb-4">Airing Today</h1>
         <div className="relative mb-4">
           <InfiniteScroll
             dataLength={results.length}
@@ -90,4 +90,4 @@ const Documentary = ({ items, title }) => {
   );
 };
 
-export default Documentary;
+export default Airing;

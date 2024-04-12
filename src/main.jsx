@@ -16,7 +16,7 @@ import Horror from "./pages/Horror";
 import WatchlistPage from "./pages/Watchlist";
 import NotFound from "./pages/NotFound"; // Import the custom 404 page component
 import Discover from "./pages/Discover";
-import Documentary from "./pages/Documentary";
+import Airing from "./pages/Airing";
 import Trending from "./pages/Trending";
 import Animation from "./pages/Animation";
 // import Anime from "./pages/Anime";
@@ -100,8 +100,8 @@ const routes = [
     element: <Animation />,
   },
   {
-    path: "/Documentary",
-    element: <Documentary />,
+    path: "/Airing",
+    element: <Airing />,
   },
   
   // Add the 404 route at the end

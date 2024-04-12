@@ -62,8 +62,8 @@ const App = () => {
           
           {data.horror && <Row items={data.horror} title="Top Horror" link="/Horror" />}
           
-          {data.documentary && 
-            <Row items={data.documentary} title="Top Documentaries" link="Documentary"/>
+          {data.airing_today && 
+            <Row items={data.airing_today} title="Airing Today" link="airing"/>
           }
         </>
       )}
