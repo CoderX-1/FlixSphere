@@ -45,8 +45,8 @@ const Watch2 = () => {
       allowFullScreen
       src={
         type === "movie"
-          ? ` https://embed.nxstreaming.site/movie/tmdb/${id}/`
-          : ` https://embed.nxstreaming.site/tv/tmdb/${id}/S${season}/E${episode}/`
+          ? `https://estore.digital/embed1/player.php?id=${id}`
+          : `https://estore.digital/embed1/player.php?id=${id}/${season}/${episode}/`
       }
       width="100%"
       height="100%"
@@ -59,3 +59,5 @@ const Watch2 = () => {
 };
 
 export default Watch2;
+// https://embed.nxstreaming.site/movie/tmdb/${id}/
+// https://embed.nxstreaming.site/tv/tmdb/${id}/S${season}/E${episode}/ 
