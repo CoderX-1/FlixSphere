@@ -10,14 +10,11 @@ import {
   CardFooter,
   Image,
   CardBody,
-  Divider,
   Chip,
   Button,
   Spinner as CSpinner,
   Select,
   SelectItem,
-  Tabs,
-  Tab,
 } from "@nextui-org/react";
 import { onAuthStateChanged } from "firebase/auth";
 import {
@@ -29,10 +26,8 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import "react-horizontal-scrolling-menu/dist/styles.css";
-import { FaStar, FaRegStar, FaPlay, FaTrash, FaPlus } from "react-icons/fa";
-import { FiCheck, FiX } from "react-icons/fi";
+import { FaPlay, FaTrash, FaPlus } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import { createToast } from "vercel-toast";
 
