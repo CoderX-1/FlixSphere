@@ -1,6 +1,7 @@
 import Loading from "../components/Loading";
 import { auth, db } from "../services/Firebase";
 import { TMDB_API_KEY } from "../services/Tmdb";
+import Navbar from "../components/Navbar";
 import { Button, Input } from "@nextui-org/react";
 import axios from "axios";
 import Filter from "bad-words";
@@ -128,6 +129,7 @@ const SignUp = () => {
 
   return (
     <>
+    <Navbar/>
       {loading ? (
         <Loading />
       ) : (

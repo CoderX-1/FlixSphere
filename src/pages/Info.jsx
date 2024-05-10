@@ -370,20 +370,17 @@ const InfoPage = () => {
                   </p>
                 )}
                 <div className="flex">
-                  <Button variant="shadow"
-                    color="danger"
-                    radius="full"
-                    startContent={<FaPlay />} onClick={toggleModal}>Play</Button>
+                  <Button
+                    className="hover:bg-[#dad6d6] bg-white text-black rounded-md"
+                    startContent={<FaPlay />}
+                    onClick={toggleModal}
+                  >
+                    Watch Now
+                  </Button>
                   <PlayerModal isOpen={modalOpen} toggleModal={toggleModal} />
-                  
+
                   {watchlistLoading ? (
-                    <Button
-                      disabled
-                      variant="shadow"
-                      color="danger"
-                      radius="full"
-                      className="ml-2"
-                    >
+                    <Button disabled radius="full" className="ml-2">
                       <CSpinner color="white" size="md" />
                     </Button>
                   ) : (
@@ -393,27 +390,21 @@ const InfoPage = () => {
                           onClick={() => {
                             removeFromWatchlist(id, type);
                           }}
-                          variant="shadow"
-                          color="danger"
                           radius="full"
                           className="ml-2"
                           endContent={<FaTrash />}
-                        >
-                          Remove From Watchlist
-                        </Button>
+                          isIconOnly
+                        ></Button>
                       ) : (
                         <Button
                           onClick={() => {
                             addToWatchList(id, type);
                           }}
-                          variant="shadow"
-                          color="danger"
                           radius="full"
                           className="ml-2"
                           endContent={<FaPlus />}
-                        >
-                          WatchList
-                        </Button>
+                          isIconOnly
+                        ></Button>
                       )}
                     </>
                   )}
@@ -510,17 +501,15 @@ const InfoPage = () => {
       )}
       <div>
         <div>
-          
+          <div>
+            <MovieRow items={similar} title="Similar" />
+          </div>
+        </div>
         <div>
-          <MovieRow items={similar} title="Similar" />
+          <div>
+            <MovieRow items={recommendations} title="Recommendations" />
+          </div>
         </div>
-        </div>
-        <div>
-        <div>
-        <MovieRow items={recommendations} title="Recommendations" />
-        </div>
-        </div>
-           
       </div>
     </div>
   );

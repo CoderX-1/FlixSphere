@@ -2,6 +2,7 @@ import Loading from "../components/Loading";
 import { auth } from "../services/Firebase";
 import { Button, Input, Spinner } from "@nextui-org/react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 import { TMDB_API_KEY } from "../services/Tmdb";
 import {
   signInWithEmailAndPassword,
@@ -136,6 +137,7 @@ const Login = () => {
 
   return (
     <>
+    <Navbar />
       {loading ? (
         <Loading />
       ) : (

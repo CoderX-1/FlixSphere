@@ -23,7 +23,7 @@ const Row = ({ items }) => {
   }, [items]);
 
   return (
-    <div className="ml-3">
+    <div className="mx-3 ">
       {loading ? (
         <div className="w-full h-10 flex items-center justify-start mb-4 ">
           <Spinner size="lg" color="default" />
@@ -51,7 +51,7 @@ function LeftArrow() {
   return (
     <Button
       onClick={() => scrollPrev()}
-      className={`h-60 left-[-0.25rem] absolute bg-transparent z-20 rounded-none w-12`}
+      className={`h-64 left-[-0.25rem] absolute bg-[#15161533] z-20 rounded-none w-12`}
       isIconOnly
     >
       <IoIosArrowBack className="w-8 h-8" />
@@ -67,7 +67,7 @@ function RightArrow() {
       disabled={isLastItemVisible}
       color="default"
       onClick={() => scrollNext()}
-      className={`h-60 absolute right-[0.001rem] z-10 bg-[#15161533] rounded-none w-10`}
+      className={`h-64 absolute right-[0.001rem] z-10 bg-[#15161533] rounded-none w-10`}
       isIconOnly
     >
       <IoIosArrowForward className="w-8 h-8" />
@@ -96,7 +96,7 @@ function RowCard({ item, isMobile, navigate }) {
             : "hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
         }`}
       >
-        <div className="rounded-lg overflow-hidden cursor-pointer">
+        <div className="rounded-full overflow-hidden cursor-pointer my-2">
           <Card isFooterBlurred radius="lg" className="border-none">
             <Image
               src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
@@ -104,7 +104,7 @@ function RowCard({ item, isMobile, navigate }) {
               className="w-40 h-60 object-cover z-0"
               fallbackSrc="/not-found.png"
             />
-            <CardFooter className="before:bg-white/10 border-white/20 border-1 overflow-hidden p-2 absolute before:rounded-xl rounded-large bottom-3 text-center md:w-[100px] w-[200px] ml-4 shadow-small z-0">
+            <CardFooter className="before:bg-white/10 border-white/20 border-1 overflow-hidden p-2 absolute before:rounded-xl rounded-large bottom-3 text-center md:w-[100px] w-[200px] ml-7 shadow-small z-0">
               <p className="text-tiny text-white/80">{item.name}</p>
             </CardFooter>
           </Card>
