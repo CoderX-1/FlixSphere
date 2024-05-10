@@ -45,8 +45,8 @@ const Watch2 = () => {
       allowFullScreen
       src={
         type === "movie"
-          ? `https://estore.digital/embed1/player.php?id=${id}`
-          : `https://estore.digital/embed1/player.php?id=${id}/${season}/${episode}/`
+          ? `https://player.autoembed.cc/embed/movie/${id}`
+          : `https://player.autoembed.cc/embed/tv/${id}/${season}/${episode}/`
       }
       width="100%"
       height="100%"
