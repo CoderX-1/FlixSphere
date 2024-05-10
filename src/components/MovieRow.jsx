@@ -105,7 +105,7 @@ function RowCard({ item, isMobile }) {
           <Image
             src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
             alt={item.name || item.title}
-           className="w-40 h-60 object-cover"
+           className="w-40 h-60 object-cover z-0"
             fallbackSrc="/not-found.png"
           />
           <div

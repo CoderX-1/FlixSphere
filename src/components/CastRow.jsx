@@ -101,10 +101,10 @@ function RowCard({ item, isMobile, navigate }) {
             <Image
               src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
               alt={item.name}
-              className="w-40 h-60 object-cover"
+              className="w-40 h-60 object-cover z-0"
               fallbackSrc="/not-found.png"
             />
-            <CardFooter className="before:bg-white/10 border-white/20 border-1 overflow-hidden p-2 absolute before:rounded-xl rounded-large bottom-3 text-center md:w-[100px] w-[200px] ml-4 shadow-small z-10">
+            <CardFooter className="before:bg-white/10 border-white/20 border-1 overflow-hidden p-2 absolute before:rounded-xl rounded-large bottom-3 text-center md:w-[100px] w-[200px] ml-4 shadow-small z-0">
               <p className="text-tiny text-white/80">{item.name}</p>
             </CardFooter>
           </Card>
