@@ -1,4 +1,5 @@
 import { TMDB_API_KEY } from "../services/Tmdb";
+import "./SliderStyles.css";
 import {
   Button,
   ButtonGroupProvider,
@@ -9,13 +10,21 @@ import {
 } from "@nextui-org/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaPlay, FaInfo, FaPlus } from "react-icons/fa";
+import { FaPlay, FaInfo, FaPlus, } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import "./SliderStyles.css";
+import PlayerModal from "../components/Playermodal";
+
 
 const HeroSection = () => {
   const [randomMovie, setRandomMovie] = useState(null);
   const navigate = useNavigate();
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
+
 
   useEffect(() => {
     axios
@@ -34,7 +43,7 @@ const HeroSection = () => {
 
   return (
     <div>
-      <div >
+      <div>
         {randomMovie && (
           <Card radius="none" className="swiper">
             <Image
@@ -52,24 +61,17 @@ const HeroSection = () => {
                 {randomMovie.overview.substring(0, 165)}...
               </p>
               <div className="flex mt-4">
-              <Button
-                    color="danger"
-                    startContent={<FaPlay />}
-                    onClick={() => {
-                      if (randomMovie.first_air_date) {
-                        navigate(`/watch/tv/${randomMovie.id}/1/1`);
-                      } else {
-                        navigate(`/watch/movie/${randomMovie.id}`);
-                      }
-                    }}
-                  >
-                    Play
-                  </Button>
-                
+              
                 <Button
-                  className="ml-2"
-                  color="danger"
-                  varient="flat"
+                  className="hover:bg-[#dad6d6] bg-white text-black rounded-md"
+                  startContent={<FaPlay />} onClick={toggleModal}
+                >
+                  Watch Now
+                </Button>
+                <PlayerModal isOpen={modalOpen} toggleModal={toggleModal} />
+
+                <Button
+                  className="ml-2 hover:bg-[#212121] bg-[#262626] text-white rounded-md"
                   onClick={() => {
                     if (randomMovie.first_air_date) {
                       navigate(`/info/tv/${randomMovie.id}`);
@@ -77,9 +79,9 @@ const HeroSection = () => {
                       navigate(`/info/movie/${randomMovie.id}`);
                     }
                   }}
-                  isIconOnly
+                  
                 >
-                  <FaInfo />
+                  <FaInfo /> Details
                 </Button>
               </div>
             </CardFooter>
@@ -88,7 +90,6 @@ const HeroSection = () => {
       </div>{" "}
     </div>
   );
-  
 };
 
 export default HeroSection;
