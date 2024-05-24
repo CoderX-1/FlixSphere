@@ -10,17 +10,29 @@ const SearchPage = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${TMDB_URL}${endpoints.search}`, {
-        params: {
-          query: query,
-          api_key: TMDB_API_KEY,
-        },
-      })
-      .then((res) => {
-        setResults(res.data.results);
-      });
+   useEffect(() => {
+    const fetchResults = async () => {
+      try {
+        const res = await axios.get(`${TMDB_URL}${endpoints.search}`, {
+          params: {
+            query: query,
+            api_key: TMDB_API_KEY,
+          },
+        });
+        const filteredResults = res.data.results.filter(
+          (result) => result.vote_average > 0
+        );
+        setResults(filteredResults);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
+    };
+
+    if (query) {
+      fetchResults();
+    } else {
+      setResults([]);
+    }
   }, [query]);
 
   const getDate = (date) => {
