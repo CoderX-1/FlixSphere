@@ -1,22 +1,24 @@
-// import Navbar from "../components/Navbar";
-import { TMDB_API_KEY, endpoints, TMDB_URL } from "../services/Tmdb";
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-// import { Input, Card, CardBody, Image, Button } from "@nextui-org/react";
-// import InfiniteScroll from "react-infinite-scroll-component";
-import VerticalCard from "../components/VerticalCard";
-// import { FaSearch } from "react-icons/fa";
-// import { useNavigate } from "react-router-dom";
-
 import React from 'react'
+import { TMDB_API_KEY, endpoints, TMDB_URL } from "../services/Tmdb";
+import VerticalCard from "../components/VerticalCard";
 
 const Trending=()=> {
   return (
     <div><VerticalCard items={`${TMDB_URL}${endpoints.trending}`} title="Trending"/></div>
   )
-}
+};
 
 export default Trending;
+
+// import React from 'react'
+// import Navbar from "../components/Navbar";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
+// import { Input, Card, CardBody, Image, Button } from "@nextui-org/react";
+// import InfiniteScroll from "react-infinite-scroll-component";
+// import { FaSearch } from "react-icons/fa";
+// import { useNavigate } from "react-router-dom";
+// import { TMDB_API_KEY, endpoints, TMDB_URL } from "../services/Tmdb";
 
 // const Trending = ({ items, title }) => {
 //   const [results, setResults] = useState([]);
