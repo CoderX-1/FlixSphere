@@ -214,10 +214,10 @@ const Explore = () => {
                 <option className="block truncate !tracking-wide" value="release_date.asc">Oldest Release</option>
                 {/* <option className="block truncate !tracking-wide" value="original_title.asc">Title (A-Z)</option>
                 <option className="block truncate !tracking-wide" value="original_title.desc">Title (Z-A)</option> */}
-                <option className="block truncate !tracking-wide" value="vote_average.desc">High Rated</option>
-                <option className="block truncate !tracking-wide" value="vote_average.asc">Low Rated</option>
+                {/* <option className="block truncate !tracking-wide" value="vote_average.desc">High Rated</option> */}
+                {/* <option className="block truncate !tracking-wide" value="vote_average.asc">Low Rated</option> */}
                 <option className="block truncate !tracking-wide" value="vote_count.desc">Most Voted</option>
-                <option className="block truncate !tracking-wide" value="vote_count.asc">Least Voted</option>
+                {/* <option className="block truncate !tracking-wide" value="vote_count.asc">Least Voted</option> */}
                 </select>
               </div>
             </div>
