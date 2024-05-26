@@ -8,7 +8,11 @@ import Toprated from "./components/Toprated";
 import Footer from "./components/Footer";
 import { TMDB_URL, TMDB_API_KEY, endpoints } from "./services/Tmdb";
 import axios from "axios";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> ed4f92b4a764743c91f9e105dd28e30a30eebe1c
 import Updatemodal from "./components/Updatemodal";
 
 const useFetchData = () => {

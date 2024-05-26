@@ -12,7 +12,11 @@ const SearchPage = () => {
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   useEffect(() => {
+=======
+   useEffect(() => {
+>>>>>>> ed4f92b4a764743c91f9e105dd28e30a30eebe1c
     const fetchResults = async () => {
       try {
         const res = await axios.get(`${TMDB_URL}${endpoints.search}`, {
