@@ -69,7 +69,9 @@ function Updatemodal() {
             <p className="mb-2 text-center">We are excited to bring you the latest features:</p>
             <ul className="list-disc list-inside mb-4 text-center">
               <li>Enhanced User Interface for better navigation.</li>
-              <li>New trending section with more personalized content.</li>
+              <li>New trending and Top Rated section with more personalized content.</li>
+              <li>Introducing a new card layout for an improved user experience.</li>
+              <li>Modern and advanced UI/UX enhancements.</li>
               <li>Improved performance and bug fixes.</li>
               <li>And much more...</li>
             </ul>
