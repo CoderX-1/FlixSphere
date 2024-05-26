@@ -64,7 +64,7 @@ function Updatemodal() {
             </button>
             <div className="flex items-center mb-4">
               <FiInfo size={32} className="mr-2" />
-              <h2 className="text-2xl font-bold">New Update Available!</h2>
+              <h2 className="text-2xl font-bold">New Update Coming Soon!</h2>
             </div>
             <p className="mb-2 text-center">We are excited to bring you the latest features:</p>
             <ul className="list-disc list-inside mb-4 text-center">
