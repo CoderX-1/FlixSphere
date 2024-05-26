@@ -12,11 +12,7 @@ const SearchPage = () => {
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
-<<<<<<< HEAD
   useEffect(() => {
-=======
-   useEffect(() => {
->>>>>>> ed4f92b4a764743c91f9e105dd28e30a30eebe1c
     const fetchResults = async () => {
       try {
         const res = await axios.get(`${TMDB_URL}${endpoints.search}`, {
@@ -74,7 +70,7 @@ const SearchPage = () => {
                   />
                   
                   <div className="absolute top-1 right-0 gap-1 bg-[#00000098] py-1 px-[5px] rounded-l-md flex items-center justify-center z-10">
-                  <svg
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="13"
                       height="13"
@@ -130,6 +126,6 @@ const SearchPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SearchPage;
