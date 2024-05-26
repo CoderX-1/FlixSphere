@@ -4,8 +4,7 @@ import { FiX, FiInfo } from 'react-icons/fi';
 function Updatemodal() {
   const [showModal, setShowModal] = useState(false);
   const [timeLeft, setTimeLeft] = useState('');
-  const Updatemodal = useRef(null);
-
+  const UpdatemodalRef = useRef(null);
 
   useEffect(() => {
     setShowModal(true);
@@ -35,7 +34,7 @@ function Updatemodal() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (Updatemodal.current && !Updatemodal.current.contains(event.target)) {
+      if (UpdatemodalRef.current && !UpdatemodalRef.current.contains(event.target)) {
         setShowModal(false);
       }
     };
@@ -55,7 +54,7 @@ function Updatemodal() {
     <div>
       {showModal && (
         <div className="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-500 ease-out">
-          <div ref={Updatemodal} className="flex flex-col items-center bg-black p-6 rounded-lg shadow-lg max-w-md w-full relative transform transition-transform duration-500 ease-out scale-100">
+          <div ref={UpdatemodalRef} className="flex flex-col items-center bg-black p-6 rounded-lg shadow-lg max-w-md w-full relative transform transition-transform duration-500 ease-out scale-100">
             <button
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
               onClick={() => setShowModal(false)}
@@ -67,9 +66,6 @@ function Updatemodal() {
               <h2 className="text-2xl font-bold">New Update Available!</h2>
             </div>
             <p className="mb-2 text-center">We have rolled out a new update with exciting features:</p>
-              <h2 className="text-2xl font-bold">New Update Coming Soon!</h2>
-            </div>
-            <p className="mb-2 text-center">We are excited to bring you the latest features:</p>
             <ul className="list-disc list-inside mb-4 text-center">
               <li>Enhanced User Interface for better navigation.</li>
               <li>New trending and Top Rated section with more personalized content.</li>
