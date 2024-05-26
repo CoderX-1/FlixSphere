@@ -1,61 +1,142 @@
-// import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import YouTube from 'react-youtube';
+
+const Watch2 = () => {
+  const { type, id, season, episode } = useParams();
+  const [videos, setVideos] = useState([]);
+  const [bestTrailer, setBestTrailer] = useState(null);
+  const [muted, setMuted] = useState(true); 
+
+  const getVideos = async () => {
+    try {
+      const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=0304cd40d6c7f17cbdb0c3e763a71764&language=en-US`);
+      const json = await response.json();
+      setVideos(json.results);
+
+      let bestTrailerId = null;
+      for (let video of json.results) {
+        if (video.site === 'YouTube' && video.type === 'Trailer' && video.name === 'Official Trailer') {
+          bestTrailerId = video.key;
+          break;
+        }
+      }
+
+      if (!bestTrailerId) {
+        bestTrailerId = json.results[json.results.length - 1].key;
+      }
+
+      setBestTrailer(bestTrailerId);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getVideos();
+  }, []);
+
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      autoplay: 1,
+      controls: 0,
+      showinfo: 0,
+      modestbranding: 1,
+      rel: 0,
+      mute: muted,
+    },
+  };
+  
+  const handleMuteUnmute = () => {
+    setMuted(!muted);
+  };
+
+  
+
+  return (
+    <div>
+      {bestTrailer && (
+        <>
+          <YouTube
+          id="youtube-player"
+            videoId={bestTrailer}
+            opts={opts}
+            onReady={(event) => {
+              event.target.playVideo();
+            }}
+          />
+          <button onClick={handleMuteUnmute}>{muted? 'Unmute' : 'Mute'}</button> 
+        </>
+      )}
+      {!bestTrailer && (
+        <p>No trailer available</p>
+      )}
+    </div>
+  );
+};
+
+export default Watch2;
+
+// import React, { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
+// import YouTube from 'react-youtube';
 
-// const Watch2 = () => {
+// const Trailer = () => {
 //   const { type, id, season, episode } = useParams();
+//   const [bestTrailer, setBestTrailer] = useState(null);
+// const [videos,setVideos] = useState([])
+//   const [muted, setMuted] = useState(true); 
 
-//   useEffect(() => {
-//     const iframeElement = document.querySelector("iframe");
+// const getVideos =async ()=>{
+// try{
+//     await fetch(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=0304cd40d6c7f17cbdb0c3e763a71764&language=en-US`)
+//     .then(res => res.json())
+//     .then(json => setVideos(json.results))
 
-//     if (iframeElement) {
-//       // Check if fullscreen mode is supported by the browser
-//       if (iframeElement.requestFullscreen) {
-//         iframeElement.requestFullscreen();
-//       } else if (iframeElement.mozRequestFullScreen) {
-//         // Firefox
-//         iframeElement.mozRequestFullScreen();
-//       } else if (iframeElement.webkitRequestFullscreen) {
-//         // Chrome, Safari and Opera
-//         iframeElement.webkitRequestFullscreen();
-//       } else if (iframeElement.msRequestFullscreen) {
-//         // IE/Edge
-//         iframeElement.msRequestFullscreen();
-//       }
-//     }
+// }catch(err){
+//     console.error(err)
+// }
+// }
 
-//     // Cleanup when the component unmounts
-//     return () => {
-//       if (document.exitFullscreen) {
-//         document.exitFullscreen();
-//       } else if (document.mozCancelFullScreen) {
-//         // Firefox
-//         document.mozCancelFullScreen();
-//       } else if (document.webkitExitFullscreen) {
-//         // Chrome, Safari and Opera
-//         document.webkitExitFullscreen();
-//       } else if (document.msExitFullscreen) {
-//         // IE/Edge
-//         document.msExitFullscreen();
-//       }
-//     };
-//   }, []); // Empty dependency array to run this effect only once
+// useEffect(()=>{
+//     getVideos()
+// })
+
+//   const opts = {
+//     height: '390',
+//     width: '640',
+//     playerVars: {
+//       autoplay: 1,
+//       showinfo: 0,
+//       modestbranding: 1,
+//       rel: 0,
+//       mute: muted,
+//     },
+//   };
+  
+//   const handleMuteUnmute = () => {
+//     setMuted(!muted);
+//   };
+
+  
 
 //   return (
-//     <iframe
-//       allowFullScreen
-//       src={
-//         type === "movie"
-//           ? `https://embed.smashystream.com/playere.php?tmdb=${id}&dplayer=D`
-//           : `tps://embed.smashystream.com/playere.php?tmdb=${id}_ID&season=${season}&episode=${episode}&dplayer=D`
-//       }
-//       width="100%"
-//       height="100%"
-//       style={{
-//         height: "100vh",
-//         width: "100%",
-//       }}
-//     />
+//     <div>
+     
+//      <YouTube
+//           id="youtube-player"
+//           videoId={videos[0]?.key}
+//             opts={opts}
+//             onReady={(event) => {
+//               event.target.playVideo();
+//             }}
+//           />
+     
+//     </div>
 //   );
 // };
 
-// export default Watch2;
+// export default Trailer;

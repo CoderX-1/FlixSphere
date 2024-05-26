@@ -1,125 +1,145 @@
-// Imports
-// Pages
 import App from "./App";
-import About from "./pages/About";
-import ActorInfoPage from "./pages/ActorInfo";
+import Airing from "./pages/Airing";
+import Animation from "./pages/Animation";
+import Explore from "./pages/Explore";
+import Horror from "./pages/Horror";
 import InfoPage from "./pages/Info";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Popular from "./pages/Popular";
 import SearchPage from "./pages/Search";
 import SignUp from "./pages/SignUp";
+import Trending from "./pages/Trending";
+import Dmca from "./pages/Dmca";
+import PrivacyPolicy from "./pages/Privacy";
+import ErrorBoundary from './components/ErrorBoundary';
+import ErrorPage from './components/ErrorPage';
 import Watch from "./pages/Watch";
+import Watch1 from "./pages/Watch1";
 import Watch2 from "./pages/Watch2";
 import Watch3 from "./pages/Watch3";
-import Popular from "./pages/Popular";
-// import Watch4 from "./pages/Watch4";
-import Horror from "./pages/Horror";
+import Watch4 from "./pages/Watch4";
 import WatchlistPage from "./pages/Watchlist";
-import NotFound from "./pages/NotFound"; // Import the custom 404 page component
-import Discover from "./pages/Discover";
-import Airing from "./pages/Airing";
-import Trending from "./pages/Trending";
-import Animation from "./pages/Animation";
-// import Anime from "./pages/Anime";
-// Styles
 import "./styles/index.css";
 import { NextUIProvider } from "@nextui-org/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 const routes = [
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/actor/:id",
-    element: <ActorInfoPage />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/info/:type/:id",
+    path: "/Info/:type/:id",
     element: <InfoPage />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/login",
+    path: "/Login",
     element: <Login />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/search",
+    path: "/Search",
     element: <SearchPage />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/signup",
+    path: "/Signup",
     element: <SignUp />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/watch/:type/:id/:season?/:episode?",
+    path: "/Watch/:type/:id/:season?/:episode?",
     element: <Watch />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/watch2/:type/:id/:season?/:episode?",
-    element: <Watch2 />
+    path: "/Watch1/:type/:id/:season?/:episode?",
+    element: <Watch1 />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/Watch2/:type/:id/:season?/:episode?",
+    element: <Watch2 />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/Watch3/:type/:id/:season?/:episode?",
     element: <Watch3 />,
+    errorElement: <ErrorPage />,
   },
-  // {
-  //   path: "/Watch4/:type/:id/:season?/:episode?",
-  //   element: <Watch4 />,
-  // },
   {
-    path: "/watchlist",
+    path: "/Watch4/:type/:id/:season?/:episode?",
+    element: <Watch4 />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/Watchlist",
     element: <WatchlistPage />,
+    errorElement: <ErrorPage />,
   },
   {
-    path: "/discover",
-    element: <Discover />,
+    path: "/Explore",
+    element: <Explore />,
+    errorElement: <ErrorPage />,
   },
-
   {
     path: "/Trending",
     element: <Trending />,
+    errorElement: <ErrorPage />,
   },
- 
+  {
+    path: "/Dmca",
+    element: <Dmca />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/PrivacyPolicy",
+    element: <PrivacyPolicy />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: "/Popular",
     element: <Popular />,
+    errorElement: <ErrorPage />,
   },
-  
   {
     path: "/Horror",
     element: <Horror />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/Animation",
     element: <Animation />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/Airing",
     element: <Airing />,
+    errorElement: <ErrorPage />,
   },
-  
-  // Add the 404 route at the end
   {
     path: "*",
     element: <NotFound />,
+    errorElement: <ErrorPage />,
   },
 ];
 
 const router = createBrowserRouter(routes);
 
-// Render the app
 ReactDOM.createRoot(document.querySelector("#root")).render(
   <React.StrictMode>
     <NextUIProvider>
-      <main className="w-full h-full bg-[#202020">
-        <RouterProvider router={router} />
-      </main>
+      <ErrorBoundary>
+        <main className="w-full h-full">
+          <RouterProvider router={router} />
+        </main>
+      </ErrorBoundary>
     </NextUIProvider>
   </React.StrictMode>
 );

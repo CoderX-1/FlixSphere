@@ -1,44 +1,35 @@
-.swiper {
+.mySwiper {
     width: 100%;
     height: 480px;
   
   }
-  
-  
-  
   @media(max-width:1500px) {
-    .swiper {
+    .mySwiper {
       width: 100%;
-      height: calc(100vh - 40vh);
+      height: calc(100vh - 31.75vh)
     }
   }
-  
   @media(max-width:1250px) {
-    .swiper {
+    .mySwiper {
       width: 100%;
-      height: calc(100vh - 50vh);
+      height: calc(100vh - 41.35vh)
     }
   }
-  
-  
   @media(max-width:600px) {
-    .swiper {
-      height: calc(100vh - 65vh);
+    .mySwiper {
+      height: calc(100vh - 56.7vh)
     }
   }
-  
   @media(max-width:380px) {
-    .swiper {
+    .mySwiper {
       height: calc(100vh - 66vh);
     }
   }
-  
   .smtruncate {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: unset;
   }
-  
   @media screen and (max-width: 640px) {
     .smtruncate {
       overflow: hidden;

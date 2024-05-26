@@ -2,9 +2,7 @@ import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { auth, db } from "../services/Firebase";
-import { TMDB_API_KEY } from "../services/Tmdb";
-import { Button, Input } from "@nextui-org/react";
-import axios from "axios";
+import { Button } from "@nextui-org/react";
 import { GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import Filter from "bad-words";
 import {

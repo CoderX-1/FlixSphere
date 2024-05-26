@@ -1,5 +1,5 @@
 import React from 'react'
-import { TMDB_API_KEY, endpoints, TMDB_URL } from "../services/Tmdb";
+import { endpoints, TMDB_URL } from "../services/Tmdb";
 import VerticalCard from "../components/VerticalCard";
 
 const Popular=()=> {

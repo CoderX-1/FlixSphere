@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: #202020;
+
+:root {
+  background: #0c0c0c; 
 }
+/* #0a0a0a */
 
 .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
   display: none;
@@ -34,9 +36,8 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: black; /* Set the color of the track (main bar of the scrollbar) */
+  background-color: black;
 }
-
 
 .Card {
   grid-template-columns: repeat(2, 48.577%);
@@ -257,5 +258,67 @@ body {
 
   }
 }
+.swiper-button-prev, .swiper-button-next {
+  color: #fff; 
+  background-color: #15161533;
+  width: 40px; 
+  height: 16.5rem;
+  top: 1.8rem;  
+}
+@media (min-width: 768px) {
+  .swiper-button-prev, .swiper-button-next {
+    width: 40px;
+    height: 18rem;
+    top: 1.8rem; 
+  }
+}
+.swiper-button-prev{
+  left: -0.25rem;
+}
+.swiper-button-next{
+  right: 0.001rem;
+}
 
+.swiper-button-prev:hover, .swiper-button-next:hover {
+  background-color: #0b0c0b38;
+}
 
+.swiper-button-prev::after, .swiper-button-next::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#opacity-layer-info {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, .7411764706) 100%);}
+
+  .filter-options {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: .25rem;
+    padding-bottom: 0
+}
+
+@media(min-width: 640px) {
+    .filter-options {
+        width:33.333333%
+    }
+}
+
+@media(min-width: 768px) {
+    .filter-options {
+        width:25%
+    }
+}
+
+@media(min-width: 1024px) {
+    .filter-options {
+        width:20%
+    }
+}

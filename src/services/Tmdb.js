@@ -12,6 +12,7 @@ export const endpoints = {
   search: "/search/multi?language=en-US&sort_by=popularity.desc",
   animation: "/discover/movie?&with_genres=16",
   discover: "/discover/movie",
+  discoverTV: "/discover/tv",
   horror:"/discover/movie?&with_genres=27",
   action:"/discover/movie?&with_genres=28",
   comedy:"/discover/movie?&with_genres=35",

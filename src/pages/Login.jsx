@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { auth } from "../services/Firebase";
 import { TMDB_API_KEY } from "../services/Tmdb";
-import { Button, Input, Spinner } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
 import axios from "axios";
 import { GoogleAuthProvider, FacebookAuthProvider , signInWithPopup } from "firebase/auth";
 import {

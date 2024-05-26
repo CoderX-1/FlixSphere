@@ -1,10 +1,9 @@
-// Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className=" text-white py-8">
+    <footer className="container mx-auto text-white py-8">
       <div className="px-4">
         <div className="flex flex-wrap justify-between items-center gap-2 md:gap-0">
           <div className="w-full md:w-1/3 text-center md:text-left">

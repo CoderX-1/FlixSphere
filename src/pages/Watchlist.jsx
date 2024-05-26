@@ -1,11 +1,11 @@
 import Spinner from "../components/Loading";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { auth } from "../services/Firebase";
 import { db } from "../services/Firebase";
 import { TMDB_API_KEY } from "../services/Tmdb";
 import {
   Card,
-  CardBody,
   Spinner as NextSpinner,
   Button,
   Image,
@@ -86,9 +86,9 @@ const WatchlistPage = () => {
   }
 
   return (
-    <>
+    <d>
       <Navbar />
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4 mt-8 h-screen">
         <h1 className="text-3xl font-bold mb-6">My Watchlist</h1>
         <div>
           {watchlistLoading ? (
@@ -153,7 +153,8 @@ const WatchlistPage = () => {
           )}
         </div>
       </div>
-    </>
+      <Footer/>
+    </d>
   );
   
 };
