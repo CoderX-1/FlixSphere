@@ -1,6 +1,6 @@
 import { TMDB_API_KEY } from "../services/Tmdb";
 import "./SliderStyles.css";
-import Heromodal from "./heromodal";
+import Heromodal from "../components/heromodal";
 import {
   Button,
   Card,
