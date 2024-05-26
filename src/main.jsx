@@ -1,12 +1,8 @@
 import App from "./App";
-<<<<<<< HEAD
 import Airing from "./pages/Airing";
 import Animation from "./pages/Animation";
 import Explore from "./pages/Explore";
 import Horror from "./pages/Horror";
-=======
-import ActorInfoPage from "./pages/ActorInfo";
->>>>>>> ed4f92b4a764743c91f9e105dd28e30a30eebe1c
 import InfoPage from "./pages/Info";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -38,15 +34,7 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-<<<<<<< HEAD
     path: "/Info/:type/:id",
-=======
-    path: "/actor/:id",
-    element: <ActorInfoPage />,
-  },
-  {
-    path: "/info/:type/:id",
->>>>>>> ed4f92b4a764743c91f9e105dd28e30a30eebe1c
     element: <InfoPage />,
     errorElement: <ErrorPage />,
   },
