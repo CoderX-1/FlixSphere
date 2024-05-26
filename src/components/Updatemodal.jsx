@@ -3,33 +3,11 @@ import { FiX, FiInfo } from 'react-icons/fi';
 
 function Updatemodal() {
   const [showModal, setShowModal] = useState(false);
-  const [timeLeft, setTimeLeft] = useState('');
   const UpdatemodalRef = useRef(null);
 
   useEffect(() => {
     setShowModal(true);
 
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const nextWednesday = new Date();
-      nextWednesday.setDate(now.getDate() + ((3 + 7 - now.getDay()) % 7));
-      nextWednesday.setHours(0, 0, 0, 0);
-
-      const difference = nextWednesday - now;
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / 1000 / 60) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
-
-      setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    };
-
-    calculateTimeLeft();
-    const timerInterval = setInterval(calculateTimeLeft, 1000);
-
-    return () => {
-      clearInterval(timerInterval);
-    };
   }, []);
 
   useEffect(() => {
@@ -75,7 +53,6 @@ function Updatemodal() {
               <li>And much more...</li>
             </ul>
             <p className="text-sm text-gray-600">Check out the updates and let us know your feedback!</p>
-            <p className="text-lg text-red-600 font-semibold">Next update in: {timeLeft}</p>
           </div>
         </div>
       )}
