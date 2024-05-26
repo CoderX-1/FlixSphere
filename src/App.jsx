@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import HeroSection from "./components/Hero";
 import Loading from "./components/Loading";
 import Row from "./components/MovieRow";
@@ -8,8 +8,6 @@ import Toprated from "./components/Toprated";
 import Footer from "./components/Footer";
 import { TMDB_URL, TMDB_API_KEY, endpoints } from "./services/Tmdb";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import React, { useEffect, useState } from "react";
 import Updatemodal from "./components/Updatemodal";
 
 const useFetchData = () => {
