@@ -249,7 +249,7 @@ const Explore = () => {
                 <h3 className="text-xl text-gray-400">No results found</h3>
               </div>
             ) : (
-              <div className="flex overflow-x-auto no-scrollbar-atAll flex-wrap px-2 md:px-4">
+              <div className="flex overflow-x-auto no-scrollbar-atAll flex-wrap">
                 {results.map((result) => (
                   <Link
                     key={result.id}
