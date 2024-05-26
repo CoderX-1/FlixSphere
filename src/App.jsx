@@ -5,6 +5,7 @@ import Header from "./components/Navbar";
 import { TMDB_URL, TMDB_API_KEY, endpoints } from "./services/Tmdb";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Updatemodal from "./components/Updatemodal";
 
 const useFetchData = () => {
   const [loading, setLoading] = useState(true);
@@ -49,6 +50,7 @@ const App = () => {
         <Loading />
       ) : (
         <>
+          <Updatemodal /> 
           <Header />
           <HeroSection />
           
