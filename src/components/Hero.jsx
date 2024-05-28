@@ -1,6 +1,5 @@
 import { TMDB_API_KEY } from "../services/Tmdb";
 import "./SliderStyles.css";
-import Heromodal from "../components/Heromodal"
 import {
   Button,
   Card,
@@ -114,20 +113,20 @@ const HeroSection = ({tvlink, movielink}) => {
               <p className="leading-tight text-md !line-clamp-2 !md:line-clamp-3 lg:leading-snug sm:w-9/12 lg:w-3/6 w-full md:text-lg lg:text-xl text-gray-400">
                 {randomMovie.overview}
               </p>
-              <div className="flex mt-2 sm:mt-4">
+              <div className="flex mt-1 sm:mt-4">
                 <Button
                   className="gap-1 font-semibold flex-shrink-0 text-sm md:text-base p-2 md:py-[.65rem] lg:rounded-lg overflow-hidden hover:brightness-[.8] justify-center items-center flex w-32 md:w-40 hover:bg-[#dad6d6] bg-white text-black rounded-md ring-1"
                   startContent={<FaPlay />}
-                  onClick={toggleModal}
+                  onClick={() => {
+                    if (randomMovie.first_air_date) {
+                      navigate(`/watch/tv/${randomMovie.id}/1/1`);
+                    } else {
+                      navigate(`/watch/movie/${randomMovie.id}`);
+                    }
+                  }}
                 >
                   Watch Now
                 </Button>
-                <Heromodal
-                  isOpen={modalOpen}
-                  toggleModal={toggleModal}
-                  movielink={`/${randomMovie.media_type}/${randomMovie.id}/${selectedSeason}/1`}
-                  tvlink={`/${randomMovie.media_type}/${randomMovie.id}/${selectedSeason}/1`}
-                />
 
                 <Button
                   className="font-semibold p-2 md:py-[.65rem] lg:rounded-lg hover:brightness-[.8]  flex w-24 text-white ml-2 bg-transparent ring-white gap-1 backdrop-blur group flex-shrink-0 text-sm md:text-base ring-1 rounded-md overflow-hidden hover:bg-white/10 justify-center items-center"

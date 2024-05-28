@@ -431,11 +431,16 @@ const InfoPage = () => {
                     <Button
                       className="hover:bg-[#dad6d6] bg-white text-black rounded-md"
                       startContent={<FaPlay />}
-                      onClick={toggleModal}
+                      onClick={() => {
+                        if (details.first_air_date) {
+                          navigate(`/watch/tv/${details.id}/1/1`);
+                        } else {
+                          navigate(`/watch/movie/${details.id}`);
+                        }
+                      }}
                     >
                       Watch Now
                     </Button>
-                    <PlayerModal isOpen={modalOpen} toggleModal={toggleModal} />
 
                     {watchlistLoading ? (
                       <Button

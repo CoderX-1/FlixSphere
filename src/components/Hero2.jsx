@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 import 'swiper/css';
 import "./SliderStyles.css";
 import { Autoplay } from 'swiper/modules';
-import PlayerModal from "./Playermodal";
 
 const HeroSection = () => {
   const [movies, setMovies] = useState([]);
@@ -73,11 +72,16 @@ const HeroSection = () => {
                 <div className="flex mt-4">
                   <Button
                     className="hover:bg-[#dad6d6] bg-white text-black rounded-md"
-                    startContent={<FaPlay />} onClick={toggleModal}
+                    startContent={<FaPlay />} onClick={() => {
+                      if (movie.first_air_date) {
+                        navigate(`/watch/tv/${movie.id}/1/1`);
+                      } else {
+                        navigate(`/watch/movie/${movie.id}`);
+                      }
+                    }}
                   >
                     Watch Now
                   </Button>
-                  <PlayerModal isOpen={modalOpen} toggleModal={toggleModal} />
 
                   <Button
                     className="ml-2 hover:bg-[#212121] bg-[#262626] text-white rounded-md"

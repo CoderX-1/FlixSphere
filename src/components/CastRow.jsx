@@ -28,21 +28,20 @@ const Row = ({ items }) => {
           slidesPerView="auto"
           navigation
           freeMode={true}
-          modules={[Navigation ,FreeMode]}
+          modules={[Navigation, FreeMode]}
         >
           {items.map((item, index) => (
-            <SwiperSlide key={index} style={{ width: 'auto' }}>
-              <RowCard item={item} />
+            <SwiperSlide key={index} className="!w-auto">
+              <MemoizedRowCard item={item} />
             </SwiperSlide>
           ))}
-          
         </Swiper>
       )}
     </div>
   );
 };
 
-function RowCard({ item }) {
+const RowCard = ({ item }) => {
   return (
     <div className="w-40 mx-3">
       <div className="relative group cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -62,6 +61,8 @@ function RowCard({ item }) {
       </div>
     </div>
   );
-}
+};
+
+const MemoizedRowCard = React.memo(RowCard);
 
 export default Row;
