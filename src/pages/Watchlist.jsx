@@ -86,8 +86,8 @@ const WatchlistPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="container mx-auto p-4 mt-8 h-screen">
-        <h1 className="text-3xl font-bold mb-6">My Watchlist</h1>
+      <div className="p-4 mt-8 h-screen flex gap-6 flex-col pt-14 max-w-[1400px] mx-auto">
+        <h1 className="text-3xl font-bold">My Watchlist</h1>
         <div>
           {watchlistLoading ? (
             <div className="flex items-center justify-center">

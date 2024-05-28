@@ -46,8 +46,8 @@ const SearchPage = () => {
   return (
     <div className="text-white">
       <Navbar />
-      <div className="container mx-auto mt-8 p-4">
-        <h1 className="text-3xl font-bold mb-4">Search</h1>
+      <div className="mt-8 p-4 flex gap-6 flex-col pt-14 max-w-[1400px] mx-auto">
+        <h1 className="text-3xl font-bold">Search</h1>
         <div className="relative mb-4">
           <Input
             value={query}
