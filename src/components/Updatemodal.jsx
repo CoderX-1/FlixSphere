@@ -3,39 +3,16 @@ import { FiX, FiInfo } from 'react-icons/fi';
 
 function Updatemodal() {
   const [showModal, setShowModal] = useState(false);
-  const [timeLeft, setTimeLeft] = useState('');
-  const Updatemodal = useRef(null);
-
+  const UpdatemodalRef = useRef(null);
 
   useEffect(() => {
     setShowModal(true);
 
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const nextWednesday = new Date();
-      nextWednesday.setDate(now.getDate() + ((3 + 7 - now.getDay()) % 7));
-      nextWednesday.setHours(0, 0, 0, 0);
-
-      const difference = nextWednesday - now;
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / 1000 / 60) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
-
-      setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    };
-
-    calculateTimeLeft();
-    const timerInterval = setInterval(calculateTimeLeft, 1000);
-
-    return () => {
-      clearInterval(timerInterval);
-    };
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (Updatemodal.current && !Updatemodal.current.contains(event.target)) {
+      if (UpdatemodalRef.current && !UpdatemodalRef.current.contains(event.target)) {
         setShowModal(false);
       }
     };
@@ -55,7 +32,7 @@ function Updatemodal() {
     <div>
       {showModal && (
         <div className="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-500 ease-out">
-          <div ref={Updatemodal} className="flex flex-col items-center bg-black p-6 rounded-lg shadow-lg max-w-md w-full relative transform transition-transform duration-500 ease-out scale-100">
+          <div ref={UpdatemodalRef} className="flex flex-col items-center bg-black p-6 rounded-lg shadow-lg max-w-md w-full relative transform transition-transform duration-500 ease-out scale-100">
             <button
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
               onClick={() => setShowModal(false)}
@@ -64,15 +41,9 @@ function Updatemodal() {
             </button>
             <div className="flex items-center mb-4">
               <FiInfo size={32} className="mr-2" />
-<<<<<<< HEAD
               <h2 className="text-2xl font-bold">New Update Available!</h2>
             </div>
             <p className="mb-2 text-center">We have rolled out a new update with exciting features:</p>
-=======
-              <h2 className="text-2xl font-bold">New Update Coming Soon!</h2>
-            </div>
-            <p className="mb-2 text-center">We are excited to bring you the latest features:</p>
->>>>>>> ed4f92b4a764743c91f9e105dd28e30a30eebe1c
             <ul className="list-disc list-inside mb-4 text-center">
               <li>Enhanced User Interface for better navigation.</li>
               <li>New trending and Top Rated section with more personalized content.</li>
@@ -82,7 +53,6 @@ function Updatemodal() {
               <li>And much more...</li>
             </ul>
             <p className="text-sm text-gray-600">Check out the updates and let us know your feedback!</p>
-            <p className="text-lg text-red-600 font-semibold">Next update in: {timeLeft}</p>
           </div>
         </div>
       )}

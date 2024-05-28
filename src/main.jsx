@@ -15,9 +15,6 @@ import PrivacyPolicy from "./pages/Privacy";
 import ErrorBoundary from './components/ErrorBoundary';
 import ErrorPage from './components/ErrorPage';
 import Watch from "./pages/Watch";
-import Watch1 from "./pages/Watch1";
-import Watch2 from "./pages/Watch2";
-import Watch3 from "./pages/Watch3";
 import Watch4 from "./pages/Watch4";
 import WatchlistPage from "./pages/Watchlist";
 import "./styles/index.css";
@@ -56,21 +53,6 @@ const routes = [
   {
     path: "/Watch/:type/:id/:season?/:episode?",
     element: <Watch />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/Watch1/:type/:id/:season?/:episode?",
-    element: <Watch1 />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/Watch2/:type/:id/:season?/:episode?",
-    element: <Watch2 />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/Watch3/:type/:id/:season?/:episode?",
-    element: <Watch3 />,
     errorElement: <ErrorPage />,
   },
   {

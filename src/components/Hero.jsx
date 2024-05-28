@@ -1,6 +1,6 @@
 import { TMDB_API_KEY } from "../services/Tmdb";
 import "./SliderStyles.css";
-import Heromodal from "./heromodal";
+import Heromodal from "../components/Heromodal"
 import {
   Button,
   Card,
@@ -146,7 +146,7 @@ const HeroSection = ({tvlink, movielink}) => {
             </CardFooter>
           </Card>
         )}
-      </div>{" "}
+      </div>
     </div>
   );
 };
