@@ -3,7 +3,6 @@ import Spinner from "../components/Loading";
 import MovieRow from "../components/MovieRow";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import PlayerModal from "../components/Playermodal";
 import { auth, db } from "../services/Firebase";
 import { TMDB_URL, TMDB_API_KEY } from "../services/Tmdb";
 import {

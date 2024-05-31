@@ -1,6 +1,5 @@
 import Spinner from "../components/Loading";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { auth } from "../services/Firebase";
 import { db } from "../services/Firebase";
 import { TMDB_API_KEY } from "../services/Tmdb";
@@ -175,7 +174,6 @@ const WatchlistPage = () => {
           )}
         </div>
       </div>
-      <Footer/>
     </div>
   );
   
