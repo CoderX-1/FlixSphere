@@ -8,7 +8,6 @@ import Toprated from "./components/Toprated";
 import Footer from "./components/Footer";
 import { TMDB_URL, TMDB_API_KEY, endpoints } from "./services/Tmdb";
 import axios from "axios";
-import Updatemodal from "./components/Updatemodal";
 
 const useFetchData = () => {
   const [loading, setLoading] = useState(true);
@@ -53,7 +52,6 @@ const App = () => {
         <Loading />
       ) : (
         <>
-          <Updatemodal /> 
           <Header />
           <HeroSection />
           <div className="m-4">
