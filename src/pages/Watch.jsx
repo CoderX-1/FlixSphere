@@ -132,7 +132,7 @@ const Watch = () => {
         return type === "movie"
           ? `https://player.autoembed.cc/embed/movie/${id}`
           : `https://player.autoembed.cc/embed/tv/${id}/${season}/${episode}/`;
-      case "vidsrc":
+      case "vidsrc2":
         return type === "movie"
           ? `https://vidsrc.xyz/embed/movie?tmdb=${id}`
           : `https://vidsrc.xyz/embed/tv?tmdb=${id}&season=${season}&episode=${episode}`;
@@ -184,7 +184,7 @@ const Watch = () => {
           <option value="MultiEmbed">MultiEmbed</option>
           <option value="vidsrc">VidSrc</option>
           <option value="autoembed">AutoEmbed (MultiLanguage)</option>
-          <option value="vidsrc">VidSrc2</option>
+          <option value="vidsrc2">vidsrc2</option>
         </select>
       </div>
       <iframe
