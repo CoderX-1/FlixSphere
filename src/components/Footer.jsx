@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -17,8 +17,8 @@ const Footer = () => {
             <p className="text-gray-400 mt-2">&copy; 2024 FlixSphere. All rights reserved.</p>
           </div>
           <div className="w-full md:w-1/3 text-center">
-            <Link to="/" className="text-gray-400 hover:text-white mx-2 transition-colors duration-300">Home</Link>
-            <Link to="/discover" className="text-gray-400 hover:text-white mx-2 transition-colors duration-300">Explore</Link>
+            <Link to="/"  className="text-gray-400 hover:text-white mx-2 transition-colors duration-300">Home</Link>
+            <Link to="/Explore" className="text-gray-400 hover:text-white mx-2 transition-colors duration-300">Explore</Link>
             <Link to="/privacypolicy" className="text-gray-400 hover:text-white mx-2 transition-colors duration-300">Privacy Policy</Link>
             <Link to="/dmca" className="text-gray-400 hover:text-white mx-2 transition-colors duration-300">DMCA</Link>
           </div>
