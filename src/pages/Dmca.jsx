@@ -26,7 +26,7 @@ const DMCA = () => {
             <li>An electronic or physical signature of the owner of the copyright or a person authorized to act on the owner’s behalf.</li>
           </ul>
           <p className="text-gray-700 dark:text-gray-300 mb-4">
-            Please send your DMCA takedown notice to <a href="mailto:dmca@binged.live" className="text-blue-500 dark:text-blue-400 underline">dmca@binged.live</a>. We will promptly investigate and take appropriate action in accordance with the DMCA.
+            Please send your DMCA takedown notice to <a href="mailto:codemaestrox@gmail.com" className="text-blue-500 dark:text-blue-400 underline">codemaestrox@gmail.com</a>. We will promptly investigate and take appropriate action in accordance with the DMCA.
           </p>
           <p className="text-gray-700 dark:text-gray-300 mb-4">Thank you for your cooperation.</p>
         </div>
