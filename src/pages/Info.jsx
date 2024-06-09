@@ -202,22 +202,6 @@ const InfoPage = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          const filteredEpisodes = data.episodes.filter(episode => episode.vote_average > 0);
-          setEpisodes(filteredEpisodes);
-        }
-      }
-    }
-  });
-
-
-  useEffect(() => {
-    const fetchEpisodes = async () => {
-      if (type === "tv") {
-        const response = await fetch(
-          `${TMDB_URL}/${type}/${id}/season/${selectedSeason}?api_key=${TMDB_API_KEY}`
-        );
-        if (response.ok) {
-          const data = await response.json();
           setEpisodes(data.episodes);
         }
       }
