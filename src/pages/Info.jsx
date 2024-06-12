@@ -1,8 +1,9 @@
 import Row from "../components/CastRow";
+import Footer from "../components/Footer";
 import Spinner from "../components/Loading";
 import MovieRow from "../components/MovieRow";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Trailer from "../components/Trailer";
 import { auth, db } from "../services/Firebase";
 import { TMDB_URL, TMDB_API_KEY } from "../services/Tmdb";
 import {
@@ -166,7 +167,9 @@ const InfoPage = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          const filteredData = data.results.filter(item => item.vote_average > 0);
+          const filteredData = data.results.filter(
+            (item) => item.vote_average > 0
+          );
           setRecommendations(filteredData);
         }
       } catch (error) {
@@ -183,7 +186,9 @@ const InfoPage = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          const filteredData = data.results.filter(item => item.vote_average > 0);
+          const filteredData = data.results.filter(
+            (item) => item.vote_average > 0
+          );
           setSimilar(filteredData);
         }
       } catch (error) {
@@ -323,7 +328,7 @@ const InfoPage = () => {
       </div>
 
       <div className="container mx-auto flex flex-col gap-9 md:gap-16">
-      <Navbar />
+        <Navbar />
         <div className="z-20">
           <Card
             radius="none"
@@ -495,7 +500,89 @@ const InfoPage = () => {
             </div>
           </Card>
         </div>
+        <Trailer />
+        <div>
+          {type === "tv" && (
+            <div className="ml-2 pt-2">
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-white">
+                Seasons
+              </h2>
+              <div className="text-white">
+                <Select
+                  label="Select Season"
+                  variant="flat"
+                  placeholder="Select an season"
+                  className="max-w-xs mb-2"
+                  defaultSelectedKeys={"1"}
+                >
+                  {seasonItems}
+                </Select>
+              </div>
+            </div>
+          )}
 
+          {type === "tv" && (
+            <div className="p-3 text-white z-20">
+              <h2 className="text-xl md:text-2xl font-semibold mb-2">
+                Episodes - Season {selectedSeason}{" "}
+                <span className="text-sm text-gray-600">
+                  ({episodes.length})
+                </span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                {episodes.map((episode) => (
+                  <Card key={episode.id} className="text-center mb-6" shadow>
+                    <Image
+                      onClick={() =>
+                        navigate(
+                          `/watch/${type}/${id}/${selectedSeason}/${episode.episode_number}`
+                        )
+                      }
+                      isZoomed
+                      src={
+                        episode.still_path
+                          ? `https://image.tmdb.org/t/p/original/${episode.still_path}`
+                          : "/not-found.png"
+                      }
+                      alt={episode.name}
+                      className="w-full h-auto rounded-lg cursor-pointer"
+                    />
+                    <CardBody>
+                      <h3 className="text-base md:text-lg mt-2 mb-2 overflow-hidden">
+                        {episode.episode_number}.{" "}
+                        {episode.name.length > 30
+                          ? `${episode.name.substring(0, 30)}...`
+                          : episode.name}
+                      </h3>
+                      <p
+                        className={`text-xs md:text-sm ${
+                          expandedOverview[episode.id]
+                            ? "overflow-visible"
+                            : "overflow-hidden"
+                        }`}
+                      >
+                        {expandedOverview[episode.id]
+                          ? episode.overview
+                          : episode.overview.substring(0, 100)}
+                        ...
+                        {episode.overview.length > 100 && (
+                          <button
+                            className="underline ml-1 text-gray-400"
+                            onClick={() => toggleOverview(episode.id)}
+                          >
+                            {expandedOverview[episode.id]
+                              ? "Read Less"
+                              : "Read More"}
+                          </button>
+                        )}
+                      </p>
+                    </CardBody>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
         <div className=" mb-2">
           <h2 className="text-2xl ml-2 md:text-3xl font-semibold mb-2 text-white">
             Cast
@@ -503,102 +590,22 @@ const InfoPage = () => {
           <Row items={cast} />
         </div>
 
-        {type === "tv" && (
-          <div className="ml-2 pt-2">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-white">
-              Seasons
-            </h2>
-            <div className="text-white">
-              <Select
-                label="Select Season"
-                variant="flat"
-                placeholder="Select an season"
-                className="max-w-xs mb-2"
-                defaultSelectedKeys={"1"}
-              >
-                {seasonItems}
-              </Select>
-            </div>
-          </div>
-        )}
-
-        {type === "tv" && (
-          <div className="p-3 text-white z-20">
-            <h2 className="text-xl md:text-2xl font-semibold mb-2">
-              Episodes - Season {selectedSeason}{" "}
-              <span className="text-sm text-gray-600">({episodes.length})</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-              {episodes.map((episode) => (
-                <Card key={episode.id} className="text-center mb-6" shadow>
-                  <Image
-                    onClick={() =>
-                      navigate(
-                        `/watch/${type}/${id}/${selectedSeason}/${episode.episode_number}`
-                      )
-                    }
-                    isZoomed
-                    src={
-                      episode.still_path
-                        ? `https://image.tmdb.org/t/p/original/${episode.still_path}`
-                        : "/not-found.png"
-                    }
-                    alt={episode.name}
-                    className="w-full h-auto rounded-lg cursor-pointer"
-                  />
-                  <CardBody>
-                    <h3 className="text-base md:text-lg mt-2 mb-2 overflow-hidden">
-                      {episode.episode_number}.{" "}
-                      {episode.name.length > 30
-                        ? `${episode.name.substring(0, 30)}...`
-                        : episode.name}
-                    </h3>
-                    <p
-                      className={`text-xs md:text-sm ${
-                        expandedOverview[episode.id]
-                          ? "overflow-visible"
-                          : "overflow-hidden"
-                      }`}
-                    >
-                      {expandedOverview[episode.id]
-                        ? episode.overview
-                        : episode.overview.substring(0, 100)}...
-
-                      {episode.overview.length > 100 && (
-                        <button
-                          className="underline ml-1 text-gray-400"
-                          onClick={() => toggleOverview(episode.id)}
-                        >
-                          {expandedOverview[episode.id]
-                            ? "Read Less"
-                            : "Read More"}
-                        </button>
-                      )}
-                    </p>
-                  </CardBody>
-                </Card>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className="m-4">
-        {similar.length > 0 ? (
-                <MovieRow items={similar} title="similar"/>
-              ) : (
-                
-                <p className="ml-2 text-lg">No similar movies/shows found.</p>
-              )}
+        <div className="m-3">
+          {similar.length > 0 ? (
+            <MovieRow items={similar} title="Similar" />
+          ) : (
+            <p className="ml-2 text-lg">No similar movies/shows found.</p>
+          )}
         </div>
         <div className="m-4">
           {recommendations.length > 0 ? (
-                <MovieRow items={recommendations} title="Recommendations"/>
-              ) : (
-                <p className="ml-2 text-lg">No recommended movies/shows found.</p>
-              )}
+            <MovieRow items={recommendations} title="Recommendations" />
+          ) : (
+            <p className="ml-2 text-lg">No recommended movies/shows found.</p>
+          )}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

@@ -40,7 +40,7 @@ const Toprated = () => {
         <div className="w-full">
           <div className="flex items-center gap-5 justify-between mb-4 md:mb-3">
             <div className="flex flex-col gap-1 tracking-wide">
-              <h2 className="text-xl md:text-2xl font-semibold text-white uppercase md:capitalize flex items-center gap-2 md:tracking-wide w-full flex-shrink-0">
+              <h2 className="text-xl md:text-2xl font-semibold text-white flex items-center gap-2 md:tracking-wide w-full flex-shrink-0">
                 Top Rated
               </h2>
               <div className="hidden lg:block text-x lg:text-sm font-light italic text-white/90">
@@ -175,7 +175,7 @@ const Toprated = () => {
             navigation
             watchSlidesProgress
             modules={[FreeMode, Navigation, Thumbs]}
-            className="hidden md:block select-none mt-[-140px] lg:mt-[-200px] swiper-thumbs"
+            className="hidden md:block select-none mt-[-140px] lg:mt-[-200px] swiper-thumbs "
           >
             {toprated.map((movie) => (
               <SwiperSlide

@@ -15,7 +15,6 @@ import PrivacyPolicy from "./pages/Privacy";
 import ErrorBoundary from './components/ErrorBoundary';
 import ErrorPage from './components/ErrorPage';
 import Watch from "./pages/Watch";
-import Watch4 from "./pages/Watch4";
 import WatchlistPage from "./pages/Watchlist";
 import "./styles/index.css";
 import { NextUIProvider } from "@nextui-org/react";
@@ -53,11 +52,6 @@ const routes = [
   {
     path: "/Watch/:type/:id/:season?/:episode?",
     element: <Watch />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/Watch4/:type/:id/:season?/:episode?",
-    element: <Watch4 />,
     errorElement: <ErrorPage />,
   },
   {

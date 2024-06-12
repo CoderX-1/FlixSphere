@@ -54,7 +54,7 @@ const App = () => {
         <>
           <Header />
           <HeroSection />
-          <div className="m-4">
+          <div className="m-3">
             <h1 className="font-medium flex items-center tracking-wide w-full text-xl md:text-2xl py-1 flex-shrink-0 text-white">
               What's Trending Today
             </h1>
