@@ -2,7 +2,7 @@ import { TMDB_URL, TMDB_API_KEY } from "../services/Tmdb";
 import { Button, Select, SelectItem } from "@nextui-org/react";
 import { Card, CardBody, Image } from "@nextui-org/react";
 import React, { useState, useEffect } from "react";
-import { IoIosMenu } from "react-icons/io";
+import { IoIosListBox  } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -164,9 +164,9 @@ const Watchplayer = ({ type, id, season, episode }) => {
           style={{ position: "absolute", zIndex: 10, right: 10, top: 10 }}
         >
           {showSidebar ? (
-            <IoCloseOutline className="h-8 w-8 " />
+            <IoCloseOutline className="h-6 w-6 " />
           ) : (
-            <IoIosMenu className="h-8 w-8" />
+            <IoIosListBox className="h-6 w-6" />
           )}
         </button>
         <iframe
