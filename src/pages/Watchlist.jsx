@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import {
   Spinner as NextSpinner,
   Image,
+  Button,
 } from "@nextui-org/react";
 import { onAuthStateChanged } from "firebase/auth";
 import {
@@ -104,12 +105,25 @@ const WatchlistPage = () => {
                     className="relative flex p-[.5rem] mb-2 flex-col group gap-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/7  rounded-lg flex-shrink-0"
                     to={item.first_air_date ? `/info/tv/${item.id}` : `/info/movie/${item.id}`}
                   >
+                  
                     <div className="w-full relative aspect-[1/1.5] rounded-lg overflow-hidden bg-[var(--light)] smoothie">
                       <Image
                         src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                         alt={item.title || item.name}
                         className="w-full h-full object-cover object-center group-hover:scale-[1.04] smoothie relative aspect-[1/1.5] rounded-lg overflow-hidden bg-[var(--light)] smoothie"
                       />
+                      <button
+                      className="absolute top-1 left-0 gap-1 bg-[#00000098] py-1 px-[5px] rounded-r-md flex items-center justify-center z-50"
+                      onClick={() => {
+                        if (item.title) {
+                          removeFromWatchlist(item.id, "movie");
+                        } else {
+                          removeFromWatchlist(item.id, "tv");
+                        }
+                      }}
+                    >
+                      Remove
+                    </button>
                       <div className="absolute top-1 right-0 gap-1 bg-[#00000098] py-1 px-[5px] rounded-l-md flex items-center justify-center z-10">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
