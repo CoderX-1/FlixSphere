@@ -2,13 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from 'react-youtube';
 
-const Watch2 = () => {
+const Trailer = () => {
   const { type, id } = useParams();
   const [videos, setVideos] = useState([]);
   const [bestTrailer, setBestTrailer] = useState(null);
   const [muted, setMuted] = useState(true); 
   const [isPlaying, setIsPlaying] = useState(false);
-  const imageRef = useRef(null);
   const youtubeRef = useRef(null);
 
   const getVideos = async () => {
@@ -39,7 +38,7 @@ const Watch2 = () => {
 
   useEffect(() => {
     getVideos();
-  }, []);
+  }, [type, id]);
 
   const opts = {
     height: '390',
@@ -65,28 +64,22 @@ const Watch2 = () => {
     }
   };
 
-  const handleMuteUnmute = () => {
-    if (youtubeRef.current) {
-      youtubeRef.current.internalPlayer.isMuted().then((muted) => {
-        if (muted) {
-          youtubeRef.current.internalPlayer.unMute();
-          setMuted(false);
-        } else {
-          youtubeRef.current.internalPlayer.mute();
-          setMuted(true);
-        }
-      });
-    }
-  };
+  // const handleMuteUnmute = () => {
+  //   if (youtubeRef.current) {
+  //     youtubeRef.current.internalPlayer.isMuted().then((muted) => {
+  //       if (muted) {
+  //         youtubeRef.current.internalPlayer.unMute();
+  //         setMuted(false);
+  //       } else {
+  //         youtubeRef.current.internalPlayer.mute();
+  //         setMuted(true);
+  //       }
+  //     });
+  //   }
+  // };
 
   return (
     <div className="relative aspect-video m-3">
-      <img
-        ref={imageRef}
-        alt={bestTrailer ? 'Trailer background' : 'Poster'}
-        className="absolute z-0 object-cover"
-        src={`https://image.tmdb.org/t/p/original/${type}`}
-      />
       {bestTrailer && (
         <YouTube
           opts={opts}
@@ -113,4 +106,4 @@ const Watch2 = () => {
   );
 };
 
-export default Watch2;
+export default Trailer;
