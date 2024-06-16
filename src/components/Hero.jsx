@@ -46,6 +46,7 @@ const HeroSection = ({tvlink, movielink}) => {
             <Image
               src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
               className="z-0 w-full h-[80vh] object-cover"
+              loading="lazy"
               removeWrapper
               radius="none"
             />

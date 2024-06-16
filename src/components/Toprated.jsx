@@ -95,6 +95,7 @@ const Toprated = () => {
                       src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                       alt={movie.title || movie.name}
                       className="w-full h-full object-cover object-center"
+                      loading="lazy"
                     />
                   </div>
                   <div className="w-full max-w-3xl mx-auto md:w-1/2 lg:w-[45%] mr-auto tracking-wide p-5 pb-6 pt-3 sm:p-8 lg:pt-12 flex gap-2 lg:gap-4 flex-col">
@@ -185,6 +186,7 @@ const Toprated = () => {
               >
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  loading="lazy"
                   alt={movie.title || movie.name}
                   className="w-full h-full object-cover z-0"
                 />
