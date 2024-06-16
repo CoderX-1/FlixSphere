@@ -168,7 +168,7 @@ const InfoPage = () => {
         if (response.ok) {
           const data = await response.json();
           const filteredData = data.results.filter(
-            (item) => item.vote_average > 0
+            (item) => item.vote_average > 0 && item.poster_path !== null
           );
           setRecommendations(filteredData);
         }
@@ -187,7 +187,7 @@ const InfoPage = () => {
         if (response.ok) {
           const data = await response.json();
           const filteredData = data.results.filter(
-            (item) => item.vote_average > 0
+            (item) => item.vote_average > 0 && item.poster_path !== null
           );
           setSimilar(filteredData);
         }

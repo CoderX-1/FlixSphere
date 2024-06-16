@@ -24,21 +24,27 @@ const useFetchData = () => {
   });
 
   useEffect(() => {
-    const fetchDataPromises = Object.entries(endpoints).map(([key, endpoint]) =>
-      axios
-        .get(`${TMDB_URL}${endpoint}`, { params: { api_key: TMDB_API_KEY } })
-        .then((response) => [key, response.data.results])
-    );
-
-    Promise.all(fetchDataPromises)
-      .then((results) => {
-        setData(Object.fromEntries(results));
-        setLoading(false);
+  const fetchDataPromises = Object.entries(endpoints).map(([key, endpoint]) =>
+    axios
+      .get(`${TMDB_URL}${endpoint}`, { params: { api_key: TMDB_API_KEY } })
+      .then((response) => {
+        // Filter the results based on vote_average and poster_path
+        const filteredResults = response.data.results.filter(
+          (item) => item.vote_average > 0 && item.poster_path !== null
+        );
+        return [key, filteredResults];
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+  );
+
+  Promise.all(fetchDataPromises)
+    .then((results) => {
+      setData(Object.fromEntries(results));
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+}, []);
 
   return { loading, data };
 };
