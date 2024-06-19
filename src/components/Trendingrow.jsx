@@ -1,18 +1,28 @@
 import { TMDB_API_KEY } from "../services/Tmdb";
 import "./SliderStyles.css";
-import { Card, CardFooter, Image, Spinner } from "@nextui-org/react";
+import {
+  Card,
+  CardFooter,
+  Image,
+  Spinner,
+} from "@nextui-org/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "swiper/css";
-import "swiper/css/free-mode";
+import 'swiper/css/free-mode';
 import { Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const TrendingRow = () => {
+const Trendingrow = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = React.useState(true);
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
 
   useEffect(() => {
     axios
@@ -20,9 +30,7 @@ const TrendingRow = () => {
         `https://api.themoviedb.org/3/trending/all/day?api_key=${TMDB_API_KEY}&language=en-US&page=1`
       )
       .then((response) => {
-        const movies = response.data.results.filter(
-          (movie) => movie.vote_average > 0 && movie.backdrop_path
-        );
+        const movies = response.data.results;
         setMovies(movies);
       })
       .catch((error) => {
@@ -65,7 +73,7 @@ const TrendingRow = () => {
         },
       }}
       autoplay={{
-        delay: 5000, // Corrected autoplay delay
+        delay: 50000000,
         disableOnInteraction: false,
       }}
       modules={[FreeMode, Autoplay]}
@@ -102,23 +110,28 @@ const TrendingRow = () => {
                           }}
                           removeWrapper
                           radius="none"
-                          loading="lazy" // Added lazy loading
                         />
+                        
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505] opacity-50"></div>
                       </span>
                       <CardFooter className="flex flex-col hover:ring-[2px] ring-[#c2b8b8] ring-inset gradient-opacity absolute w-full h-full gap-1 md:gap-2 justify-end bottom-[0.75rem] sm:bottom-[1.35rem] smoothie rounded-2xl lg:rounded-3xl items-start">
-                        <h1 className="line-clamp-2 uppercase tracking-wide !leading-none text-sm md:text-base font-bold">
+                        <h1 className="line-clamp-2 uppercase tracking-wide !leading-none text-sm md:text-base font-bold
+                         ">
                           {movie.title || movie.name}
                         </h1>
                         <div className="flex flex-wrap text-xs !leading-tight text-[#2cdfff] font-normal tracking-wider gap-1">
                           <span>
                             Rating: {movie.vote_average.toFixed(1)}
                           </span>
-                          <span>•</span>
+                          <span>
+                            •
+                          </span>
                           <span>
                             {(movie.release_date || movie.first_air_date).substring(0, 4)}
                           </span>
-                          <span>•</span>
+                          <span>
+                            •
+                          </span>
                           <span className="uppercase">
                             {movie.original_language}
                           </span>
@@ -136,4 +149,4 @@ const TrendingRow = () => {
   );
 };
 
-export default TrendingRow;
+export default Trendingrow;

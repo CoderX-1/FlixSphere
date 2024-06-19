@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/react";
 import axios from "axios";
 import React, { useEffect, useState, useCallback } from "react";
-import { FaPlay, FaInfo, FaStar } from "react-icons/fa";
+import { FaPlay, FaInfo } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 
 const HeroSection = React.memo(({ tvlink, movielink }) => {
@@ -57,7 +57,20 @@ const HeroSection = React.memo(({ tvlink, movielink }) => {
           </h1>
           <div className="text-xs 2xl:text-sm tracking-wider text-white/90 flex gap-3">
             <span className="flex items-center gap-1 rounded-md">
-            <FaStar size={12} color="whitesmoke" />
+            <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="whitesmoke"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-star"
+                  >
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
               <span>{randomMovie.vote_average.toFixed(1)}</span>
             </span>
             <span className="flex gap-1">
