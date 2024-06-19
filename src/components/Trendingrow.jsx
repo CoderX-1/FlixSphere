@@ -108,7 +108,6 @@ const Trendingrow = () => {
                             background:
                               "linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%)",
                           }}
-                          loading="lazy"
                           removeWrapper
                           radius="none"
                         />
