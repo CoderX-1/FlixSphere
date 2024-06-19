@@ -17,12 +17,6 @@ const HeroSection = ({tvlink, movielink}) => {
   const [randomMovie, setRandomMovie] = useState(null);
   const navigate = useNavigate();
 
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
-  };
-
   useEffect(() => {
     axios
       .get(
