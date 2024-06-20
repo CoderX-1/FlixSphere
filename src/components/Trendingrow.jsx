@@ -17,12 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const Trendingrow = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = React.useState(true);
-
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
-  };
 
   useEffect(() => {
     axios
