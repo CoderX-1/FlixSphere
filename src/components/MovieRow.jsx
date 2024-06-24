@@ -71,7 +71,6 @@ function RowCard({ item }) {
             <Image
               src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
               alt={item.name || item.title}
-              loading="lazy"
               className="w-44 md:w-48 object-cover z-0"
               fallbackSrc="/not-found.png"
             />

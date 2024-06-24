@@ -35,7 +35,7 @@ const Trendingrow = () => {
         setLoading(false);
       });
   }, []);
-
+  
   return (
     <Swiper
       className="h-full w-full my-3"
@@ -68,7 +68,7 @@ const Trendingrow = () => {
         },
       }}
       autoplay={{
-        delay: 50000000,
+        delay: 5000,
         disableOnInteraction: false,
       }}
       modules={[FreeMode, Autoplay]}
