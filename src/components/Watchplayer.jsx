@@ -1,16 +1,18 @@
 import { TMDB_URL, TMDB_API_KEY } from "../services/Tmdb";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import { Button, Select, SelectItem, Spinner } from "@nextui-org/react";
 import { Card, CardBody, Image } from "@nextui-org/react";
 import React, { useState, useEffect } from "react";
 import { IoIosListBox  } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate, Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const Watchplayer = ({ type, id, season, episode }) => {
   const [player, setPlayer] = useState("vidsrc");
   const [details, setDetails] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
-  const [selectedSeason, setSelectedSeason] = useState(1);
+  const [similar, setSimilar] = useState([]);
+  const [selectedSeason, setSelectedSeason] = useState(season || 1);
   const [episodes, setEpisodes] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [selectedEpisode, setSelectedEpisode] = useState(episode || 1);
@@ -32,6 +34,7 @@ const Watchplayer = ({ type, id, season, episode }) => {
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
     };
 
@@ -56,8 +59,6 @@ const Watchplayer = ({ type, id, season, episode }) => {
       }
     };
 
-    fetchRecommendations();
-
     const fetchSimilar = async () => {
       try {
         const response = await fetch(
@@ -75,18 +76,23 @@ const Watchplayer = ({ type, id, season, episode }) => {
       }
     };
 
+    fetchRecommendations();
     fetchSimilar();
   }, [type, id]);
 
   useEffect(() => {
     const fetchEpisodes = async () => {
       if (type === "tv") {
-        const response = await fetch(
-          `${TMDB_URL}/${type}/${id}/season/${selectedSeason}?api_key=${TMDB_API_KEY}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setEpisodes(data.episodes);
+        try {
+          const response = await fetch(
+            `${TMDB_URL}/${type}/${id}/season/${selectedSeason}?api_key=${TMDB_API_KEY}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            setEpisodes(data.episodes);
+          }
+        } catch (error) {
+          console.error("Error fetching episodes:", error);
         }
       }
     };
@@ -122,7 +128,14 @@ const Watchplayer = ({ type, id, season, episode }) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen w-screen bg-black/75">
+        <div className="text-white text-center">
+          <Spinner size="lg" color="white"/>
+          <div className="loader"></div>
+        </div>
+      </div>
+    );
   }
 
   const seasonItems = [];
@@ -174,6 +187,7 @@ const Watchplayer = ({ type, id, season, episode }) => {
           src={getPlayerUrl()}
           width="100%"
           height="100%"
+          title="Player"
         />
       </div>
       <div
@@ -298,9 +312,9 @@ const Watchplayer = ({ type, id, season, episode }) => {
                           viewBox="0 0 24 24"
                           fill="#000000"
                           stroke="#000000d5"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           className="lucide lucide-play"
                         >
                           <polygon points="5 3 19 12 5 21 5 3"></polygon>

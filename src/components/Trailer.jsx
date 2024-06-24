@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from 'react-youtube';
+import { Spinner } from "@nextui-org/react";
 
 const Trailer = () => {
   const { type, id } = useParams();
   const [videos, setVideos] = useState([]);
   const [bestTrailer, setBestTrailer] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [muted, setMuted] = useState(true); 
   const [isPlaying, setIsPlaying] = useState(false);
   const youtubeRef = useRef(null);
@@ -30,9 +32,11 @@ const Trailer = () => {
       }
 
       setBestTrailer(bestTrailerId);
+      setLoading(false);
 
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   };
 
@@ -80,14 +84,20 @@ const Trailer = () => {
 
   return (
     <div className="relative aspect-video m-3">
-      {bestTrailer && (
-        <YouTube
-          opts={opts}
-          ref={youtubeRef}
-          videoId={bestTrailer}
-          className="absolute top-0 left-0 w-full h-full"
-          iframeClassName=" w-full h-full z-10"
-        />
+      {loading ? (
+        <div className="w-full h-full flex items-center justify-center">
+          <Spinner size="lg" color="default" />
+        </div>
+      ) : (
+        bestTrailer && (
+          <YouTube
+            opts={opts}
+            ref={youtubeRef}
+            videoId={bestTrailer}
+            className="absolute top-0 left-0 w-full h-full"
+            iframeClassName="w-full h-full z-10"
+          />
+        )
       )}
       {/* <div className="absolute bottom-6 z-20 flex w-full items-center justify-end gap-2 px-10">
         <button

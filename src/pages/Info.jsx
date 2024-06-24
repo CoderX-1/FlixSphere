@@ -306,7 +306,7 @@ const InfoPage = () => {
 
   return (
     <div className="h-screen w-full">
-      <div className="fixed z-[-1] bottom-0 left-0 w-full h-screen">
+      <div className="fixed z-[-1] bottom-0 left-0 w-full h-screen blur-sm">
         <span
           className="lazy-load-image-background opacity lazy-load-image-loaded"
           style={{
