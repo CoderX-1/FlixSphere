@@ -18,7 +18,9 @@ const RowCard = ({ item, loading }) => {
       ) : (
         <Link
           to={
-            item.first_air_date ? `/info/tv/${item.id}` : `/info/movie/${item.id}`
+            item.first_air_date
+              ? `/info/tv/${item.id}`
+              : `/info/movie/${item.id}`
           }
         >
           <div className="relative group cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -27,7 +29,8 @@ const RowCard = ({ item, loading }) => {
                 src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
                 alt={item.name || item.title}
                 className="w-44 md:w-48 object-cover z-0"
-                fallbackSrc="/not-found.png"
+                width="176"
+                height="256"
               />
               <div className="absolute top-1 right-0 gap-1 bg-[#00000098] py-1 px-[4px] rounded-l-md rounded-tr-lg flex items-center justify-center">
                 <svg

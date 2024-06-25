@@ -109,6 +109,8 @@ const Trendingrow = () => {
                             }}
                             removeWrapper
                             radius="none"
+                            width="350"
+                            height="175"
                           />
 
                           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505] opacity-50"></div>
