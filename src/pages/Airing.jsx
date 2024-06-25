@@ -9,8 +9,6 @@ const Airing=()=> {
 };
 
 export default Airing;
-
-// import Navbar from "../components/Navbar";
 // import { TMDB_API_KEY, endpoints, TMDB_URL } from "../services/Tmdb";
 // import { useState, useEffect } from "react";
 // import axios from "axios";
