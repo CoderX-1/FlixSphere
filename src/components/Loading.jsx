@@ -3,7 +3,13 @@ import React from "react";
 const Loading = () => {
   return (
     <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-dark bg-opacity-50 z-50">
-      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-200"></div>
+     <div>
+      <img
+        src="/logo.png"
+        alt="Logo"
+        className="w-44 md:w-44 lg:w-60 object-contain animate-pulse"
+      />
+  </div>
     </div>
   );
 };

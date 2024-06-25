@@ -5,20 +5,17 @@ import {
   NavbarContent,
   NavbarMenu,
   NavbarMenuItem,
-  NavbarMenuToggle,
 } from "@nextui-org/react";
 import { deleteUser, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useState, useEffect, useRef } from "react";
 import { FiEye, FiList, FiSearch } from "react-icons/fi";
-import { MdDelete, MdEmail, MdQuestionMark } from "react-icons/md";
+import { MdQuestionMark } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
-
 import { Link, useNavigate } from "react-router-dom";
 import { createToast } from "vercel-toast";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isaccOpen, setIsaccOpen] = useState(false);
