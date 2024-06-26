@@ -346,6 +346,8 @@ const InfoPage = () => {
                     alt="Poster"
                     radius="lg"
                     className="w-48 md:w-64"
+                    width="225"
+                    height="450"
                   />
                 </div>
                 <div className="md:w-2/3 flex flex-col gap-1 sm:gap-3">
