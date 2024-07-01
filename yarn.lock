@@ -825,6 +825,14 @@
     protobufjs "^7.2.4"
     yargs "^17.7.2"
 
+"@gsap/react@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@gsap/react/-/react-2.1.1.tgz"
+  integrity sha512-apGPRrmpqxvl1T6Io1KgT8tFU+IuACI6z4zmT7t8+PASserJeLVRFJdSNUFA2Xb/eVkZI1noE8LIrY/w/oJECw==
+  dependencies:
+    gsap "^3.12.5"
+    react ">=16"
+
 "@humanwhocodes/config-array@^0.13.0":
   version "0.13.0"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.13.0.tgz"
@@ -4035,6 +4043,11 @@ graceful-fs@^4.1.2:
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
+gsap@^3.12.5:
+  version "3.12.5"
+  resolved "https://registry.npmjs.org/gsap/-/gsap-3.12.5.tgz"
+  integrity sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==
+
 has-bigints@^1.0.1, has-bigints@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/has-bigints/-/has-bigints-1.0.2.tgz"
@@ -5230,7 +5243,7 @@ react-youtube@^10.1.0:
     prop-types "15.8.1"
     youtube-player "5.5.2"
 
-react@*, "react@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.0 || ^17.0.1 || ^18.0.0", react@^18.0.0, react@^18.2.0, react@>=0.14.1, react@>=16.0.0, react@>=16.8, react@>=18:
+react@*, "react@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.0 || ^17.0.1 || ^18.0.0", react@^18.0.0, react@^18.2.0, react@>=0.14.1, react@>=16, react@>=16.0.0, react@>=16.8, react@>=18:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

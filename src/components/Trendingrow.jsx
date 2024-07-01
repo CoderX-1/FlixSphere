@@ -115,7 +115,7 @@ const Trendingrow = () => {
 
                           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505] opacity-50"></div>
                         </span>
-                        <CardFooter className="flex flex-col hover:ring-[2px] ring-[#c2b8b8] ring-inset gradient-opacity absolute w-full h-full gap-1 md:gap-2 justify-end bottom-[0.75rem] sm:bottom-[1.35rem] smoothie rounded-2xl lg:rounded-3xl items-start">
+                        <CardFooter className="flex flex-col hover:ring-[2px] ring-[#c2b8b8] ring-inset gradient-opacity absolute w-full h-full gap-1 md:gap-2 justify-end bottom-[9%] sm:bottom-[12%] smoothie rounded-2xl lg:rounded-3xl items-start">
                           <h1 className="line-clamp-2 uppercase tracking-wide !leading-none text-sm md:text-base font-bold">
                             {movie.title || movie.name}
                           </h1>

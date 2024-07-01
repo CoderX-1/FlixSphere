@@ -150,16 +150,15 @@ const Header = () => {
           aria-expanded="true"
         >
           {isOpen ? (
-            <IoCloseOutline className="h-8 w-8 "/>
+            <IoCloseOutline className="h-8 w-8 z-30"/>
             
           ) : (
             <IoIosMenu className="h-8 w-8"/>
 
           )}
         </button>
-
         <div
-          className={`z-30 px-6 pt-2 fixed flex max-w-full top-[var(--navbar-height)] inset-x-0 bottom-0 w-screen flex-col gap-2 overflow-y-auto backdrop-blur-xl backdrop-saturate-150 bg-background/90 text-white origin-top-right shadow-lg h-screen ${
+          className={`z-10 px-6 pt-14 fixed flex max-w-full top-0 inset-x-0 bottom-0 w-screen flex-col gap-2 overflow-y-auto backdrop-blur-xl backdrop-saturate-150 bg-background/90 text-white origin-top-right shadow-lg h-screen ${
             isOpen
               ? "transition ease-out duration-100 transform opacity-100 scale-100"
               : "hidden transition ease-in duration-75 transform opacity-0 scale-95"
