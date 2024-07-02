@@ -40,7 +40,7 @@ const HeroSection = ({ tvlink, movielink }) => {
       <div>
         {loading ? (
           <Card radius="none" className="mySwiper animate-pulse">
-          <div className="wWbg-[#272727] w-full h-[80vh] object-cover"></div>
+          <div className="bg-[#272727] w-full h-[80vh] object-cover"></div>
           <div className="z-10 w-full h-[80vh] absolute justify-center bg-gradient-to-l from-transparent to-[#050505]"></div>
           <CardFooter className="items-start flex-col overflow-hidden bottom-5 xs:bottom-10 py-1 absolute z-10 gap-1 sm:gap-2">
             <div className="h-8 bg-gray-400 rounded mb-2 w-3/4"></div>
@@ -62,7 +62,6 @@ const HeroSection = ({ tvlink, movielink }) => {
               <Image
                 src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
                 className="z-0 w-full h-[80vh] object-cover"
-                loading="lazy"
                 removeWrapper
                 radius="none"
               />
