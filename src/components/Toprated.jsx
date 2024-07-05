@@ -186,7 +186,6 @@ const Toprated = () => {
               >
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                  loading="lazy"
                   alt={movie.title || movie.name}
                   className="w-full h-full object-cover z-0"
                 />
