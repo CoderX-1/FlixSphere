@@ -20,8 +20,8 @@ const Row = ({ items }) => {
   return (
     <div>
       {loading ? (
-        <div className="w-full h-10 flex items-center justify-start mb-4">
-          <Swiper slidesPerView="auto" freeMode={true} modules={[FreeMode]}>
+        <div className="w-full flex items-center justify-start mb-4">
+          <Swiper className="m-0" slidesPerView="auto" freeMode={true} modules={[FreeMode]}>
             {[...Array(5)].map((_, index) => (
               <SwiperSlide key={index} className="!w-auto">
                 <div className="w-40 mx-3 animate-pulse">
@@ -59,7 +59,7 @@ const RowCard = ({ item }) => {
   return (
     <div className="w-40 mx-3">
       <div className="relative group cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out">
-        <div className="rounded-full overflow-hidden cursor-pointer my-2">
+        <div className="rounded-large overflow-hidden cursor-pointer my-2">
           <Card isFooterBlurred radius="lg" className="border-none">
             <Image
               src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
