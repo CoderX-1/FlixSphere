@@ -129,7 +129,7 @@ const Watchplayer = ({ type, id, season, episode }) => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen w-screen bg-black/75">
+      <div className="flex justify-center items-center w-screen bg-black/75">
         <div className="text-white text-center">
           <Spinner size="lg" color="white"/>
           <div className="loader"></div>
@@ -159,11 +159,11 @@ const Watchplayer = ({ type, id, season, episode }) => {
   return (
     <div className="relative w-full max-w-7xl xl:rounded-lg aspect-[16/11] sm:!aspect-video bg-white/5 mx-auto shadow-xl overflow-hidden">
       <div style={{ height: "100%", width: "100%" }}>
-        <div style={{ position: "absolute", zIndex: 1, left: 10, top: 10 }}>
+        <div style={{ position: "absolute", zIndex: 1, left: 40, top: 5 }}>
           <select
             value={player}
             onChange={(e) => setPlayer(e.target.value)}
-            className="p-3 text-base w-32"
+            className="p-2 text-base w-28"
           >
             <option value="vidsrc">VidSrc</option>
             <option value="vidsrcpro">Vidsrcpro</option>
