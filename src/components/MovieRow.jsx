@@ -24,7 +24,7 @@ const RowCard = ({ item, loading }) => {
           }
         >
           <div className="relative group cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out">
-            <div className="rounded-lg overflow-hidden cursor-pointer">
+            <div className="rounded-full overflow-hidden cursor-pointer">
               <Image
                 src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
                 alt={item.name || item.title}
