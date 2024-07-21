@@ -59,7 +59,7 @@ const RowCard = ({ item }) => {
   return (
     <div className="w-40 mx-3">
       <div className="relative group cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out">
-        <div className="rounded-large overflow-hidden cursor-pointer my-2">
+        <div className="rounded-full overflow-hidden cursor-pointer my-2">
           <Card isFooterBlurred radius="lg" className="border-none">
             <Image
               src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
