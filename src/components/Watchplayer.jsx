@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import { IoIosListBox  } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate, Link } from "react-router-dom";
-import Loading from "./Loading";
 
 const Watchplayer = ({ type, id, season, episode }) => {
   const [player, setPlayer] = useState("autoembed");
