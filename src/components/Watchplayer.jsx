@@ -129,10 +129,9 @@ const Watchplayer = ({ type, id, season, episode }) => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center w-screen bg-black/75">
+      <div className="flex justify-center items-center bg-black/75">
         <div className="text-white text-center">
           <Spinner size="lg" color="white"/>
-          <div className="loader"></div>
         </div>
       </div>
     );
