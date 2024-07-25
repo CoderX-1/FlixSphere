@@ -8,7 +8,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Loading from "./Loading";
 
 const Watchplayer = ({ type, id, season, episode }) => {
-  const [player, setPlayer] = useState("vidsrc");
+  const [player, setPlayer] = useState("autoembed");
   const [details, setDetails] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [similar, setSimilar] = useState([]);
@@ -159,7 +159,7 @@ const Watchplayer = ({ type, id, season, episode }) => {
   return (
     <div className="relative w-full max-w-7xl xl:rounded-lg aspect-[16/11] sm:!aspect-video bg-white/5 mx-auto shadow-xl overflow-hidden">
       <div style={{ height: "100%", width: "100%" }}>
-        <div style={{ position: "absolute", zIndex: 1, left: 40, top: 5 }}>
+        {/* <div style={{ position: "absolute", zIndex: 1, left: 40, top: 5 }}>
           <select
             value={player}
             onChange={(e) => setPlayer(e.target.value)}
@@ -171,7 +171,7 @@ const Watchplayer = ({ type, id, season, episode }) => {
             <option value="autoembed">AutoEmbed (MultiLanguage)</option>
             <option value="vidsrc2">vidsrc2</option>
           </select>
-        </div>
+        </div> */}
         <button
           onClick={() => setShowSidebar(!showSidebar)}
           style={{ position: "absolute", zIndex: 10, right: 10, top: 10 }}
