@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const RowCard = ({ item, loading }) => {
   return (
-    <div className="w-44 md:w-48 my-2">
+    <div className="w-48 md:w-56 my-2">
       {loading ? (
         <div className="relative group cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out">
           <div className="rounded-lg overflow-hidden cursor-pointer bg-[#272727] animate-pulse h-64"></div>
