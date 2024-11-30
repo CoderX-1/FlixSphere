@@ -253,7 +253,7 @@ const Explore = () => {
                 {results.map((result) => (
                   <Link
                     key={result.id}
-                    className="relative flex p-[.5rem] mb-2 flex-col group gap-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/7  rounded-lg flex-shrink-0"
+                    className="relative flex p-[.5rem] mb-2 flex-col group gap-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/7  rounded-lg flex-shrink-0 group cursor-pointer hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     to={result.first_air_date ? `/info/tv/${result.id}` : `/info/movie/${result.id}`}
                   >
                     <div className="w-full relative aspect-[1/1.5] rounded-lg overflow-hidden bg-[var(--light)] smoothie">
