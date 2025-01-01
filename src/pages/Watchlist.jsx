@@ -102,7 +102,7 @@ const WatchlistPage = () => {
               {watchlistData.map((item) => (
                 <Link
                 key={item.id}
-                    className="relative flex p-[.5rem] mb-2 flex-col group gap-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/7  rounded-lg flex-shrink-0"
+                    className="relative flex p-[.5rem] mb-2 flex-col group gap-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/7  rounded-lg flex-shrink-0 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     to={item.first_air_date ? `/info/tv/${item.id}` : `/info/movie/${item.id}`}
                   >
                   
