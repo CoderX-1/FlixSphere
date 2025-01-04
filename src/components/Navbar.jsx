@@ -74,11 +74,6 @@ const Header = () => {
     setIsaccOpen(!isaccOpen);
   };
 
-  const handleOptionClick = (action) => {
-    console.log(`Performing action: ${action}`);
-    setIsOpen(false);
-  };
-
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -93,6 +88,27 @@ const Header = () => {
   const handleMylist = () => {
     if (user) {
       navigate("/Watchlist");
+    } else {
+      createToast(
+        "You are not signed in. Please sign in to access your watchlist.",
+        {
+          action: {
+            text: "Login",
+            callback(toast) {
+              navigate("/Login");
+              toast.destroy();
+            },
+          },
+          timeout: 3000,
+          cancel: "Cancel",
+          type: "dark",
+        }
+      );
+    }
+  };
+  const handleProfile = () => {
+    if (user) {
+      navigate("/Profile");
     } else {
       createToast(
         "You are not signed in. Please sign in to access your watchlist.",
@@ -301,7 +317,7 @@ const Header = () => {
                       My List
                     </button>
                     <button
-                      onClick={() => handleOptionClick("Profile")}
+                      onClick={handleProfile}
                       className="block px-4 w-full py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                       role="menuitem"
                     >

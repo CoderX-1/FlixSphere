@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Popular from "./pages/Popular";
 import SearchPage from "./pages/Search";
+import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Trending from "./pages/Trending";
 import Dmca from "./pages/Dmca";
@@ -47,6 +48,11 @@ const routes = [
   {
     path: "/Signup",
     element: <SignUp />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/Profile",
+    element: <Profile />,
     errorElement: <ErrorPage />,
   },
   {
