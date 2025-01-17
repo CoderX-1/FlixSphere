@@ -120,12 +120,14 @@ const Trendingrow = () => {
                             {movie.title || movie.name}
                           </h1>
                           <div className="flex flex-wrap text-xs !leading-tight text-[#2cdfff] font-normal tracking-wider gap-1">
-                            <span>Rating: {movie.vote_average.toFixed(1)}</span>
+                            <span>
+                              Rating: {movie.vote_average?.toFixed(1)}
+                            </span>
                             <span>•</span>
                             <span>
                               {(
                                 movie.release_date || movie.first_air_date
-                              ).substring(0, 4)}
+                              )?.substring(0, 4)}
                             </span>
                             <span>•</span>
                             <span className="uppercase">
