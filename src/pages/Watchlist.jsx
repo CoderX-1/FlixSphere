@@ -94,8 +94,17 @@ const WatchlistPage = () => {
               <NextSpinner color="primary" size="xl" className="mb-6 mt-2" />
             </div>
           ) : watchlistData.length === 0 ? (
-            <div className="flex items-center justify-center">
-              <p className="text-gray-500">Your watchlist is currently empty.</p>
+            <div className="flex flex-col items-center justify-center gap-4 py-12">
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg>
+              <p className="text-xl text-gray-400 font-medium">Your watchlist is empty</p>
+              <p className="text-gray-500">Start adding your favorite movies and TV shows!</p>
+              <Link to="/explore">
+                <Button color="primary" className="mt-2">
+                  Explore Content
+                </Button>
+              </Link>
             </div>
           ) : (
             <div className="flex overflow-x-auto no-scrollbar-atAll flex-wrap">
@@ -114,7 +123,9 @@ const WatchlistPage = () => {
                       />
                       <button
                       className="absolute top-1 left-0 gap-1 bg-[#00000098] py-1 px-[5px] rounded-r-md flex items-center justify-center z-50"
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
                         if (item.title) {
                           removeFromWatchlist(item.id, "movie");
                         } else {

@@ -5,6 +5,7 @@ import {
   NavbarContent,
   NavbarMenu,
   NavbarMenuItem,
+  Avatar,
 } from "@nextui-org/react";
 import { deleteUser, onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useState, useEffect, useRef } from "react";
@@ -50,20 +51,24 @@ const Header = () => {
         setLoading(false);
       }
     });
+  }, []);
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
+      if (accdropdown.current && !accdropdown.current.contains(event.target)) {
+        setIsaccOpen(false);
+      }
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
 
-    ["mousedown", "touchstart", "scroll"].forEach((event) => {
-      document.addEventListener(event, handleClickOutside);
-    });
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
 
     return () => {
-      ["mousedown", "touchstart", "scroll"].forEach((event) => {
-        document.removeEventListener(event, handleClickOutside);
-      });
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, []);
 
@@ -106,9 +111,9 @@ const Header = () => {
       );
     }
   };
-  const handleProfile = () => {
+  const handleAccount = () => {
     if (user) {
-      navigate("/Profile");
+      navigate("/Account");
     } else {
       createToast(
         "You are not signed in. Please sign in to access your watchlist.",
@@ -167,7 +172,7 @@ const Header = () => {
         >
           {isOpen ? (
             <IoCloseOutline className="h-8 w-8 z-30"/>
-            
+
           ) : (
             <IoIosMenu className="h-8 w-8"/>
 
@@ -279,27 +284,14 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="true"
                 >
-                  <svg
+                  <Avatar
+                    src={auth.currentUser?.photoURL || <img src="https://api.iconify.design/mdi:account-circle.svg?color=white" alt="User Icon" className="h-9 w-9"/>}
                     className="h-9 w-9"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 64 64"
-                    id="User"
-                  >
-                    <path
-                      d="M32 32.86a9.22 9.22 0 1 1 9.21-9.22A9.23 9.23 0 0 1 32 32.86zm0-15.43a6.22 6.22 0 1 0 6.21 6.21A6.21 6.21 0 0 0 32 17.43zm0 39.21a24.68 24.68 0 0 1-15.22-5.27 1.52 1.52 0 0 1-.57-1.06v-.47a15.8 15.8 0 1 1 31.6 0v.47a1.52 1.52 0 0 1-.57 1.06A24.68 24.68 0 0 1 32 56.64zm-12.79-7.19a21.62 21.62 0 0 0 25.58 0 12.8 12.8 0 0 0-25.58 0zm27.08.74z"
-                      fill="#f2f2f2"
-                      class="color000000 svgShape"
-                    ></path>
-                    <path
-                      d="M32 56.64a24.65 24.65 0 1 1 15.22-5.27A24.68 24.68 0 0 1 32 56.64Zm0-46.28A21.63 21.63 0 0 0 18.64 49a21.64 21.64 0 0 0 35-17A21.67 21.67 0 0 0 32 10.36Z"
-                      fill="#f2f2f2"
-                      class="color000000 svgShape"
-                    ></path>
-                  </svg>
+                  />
                 </button>
 
                 <div
-                  className={`origin-top-right absolute right-0 mt-2 w-28 rounded-md shadow-lg bg-white  ${
+                  className={`origin-top-right absolute right-0 mt-2 w-48 rounded-xl shadow-lg bg-black/90 backdrop-blur-xl border border-white/10 ${
                     isaccOpen
                       ? "transition ease-out duration-100 transform opacity-100 scale-100"
                       : "hidden transition ease-in duration-75 transform opacity-0 scale-95"
@@ -308,34 +300,45 @@ const Header = () => {
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
-                  <div className="py-1" role="none">
+                  <div className="py-2 px-1" role="none">
                     <button
                       onClick={handleMylist}
-                      className="block px-4 w-full py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      className="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 rounded-lg transition-all duration-200"
                       role="menuitem"
                     >
+                      <FiList className="w-4 h-4" />
                       My List
                     </button>
                     <button
-                      onClick={handleProfile}
-                      className="block px-4 w-full py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      onClick={handleAccount}
+                      className="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 rounded-lg transition-all duration-200"
                       role="menuitem"
                     >
-                      Profile
+                      <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                      Account
                     </button>
                     <button
                       onClick={handleSignOut}
-                      className="block px-4 w-full py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      className="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 rounded-lg transition-all duration-200"
                       role="menuitem"
                     >
+                      <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                      </svg>
                       Sign Out
                     </button>
+                    <div className="h-[1px] bg-white/10 my-1 mx-2"></div>
                     <button
                       onClick={handleDelete}
-                      className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      className="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 rounded-lg transition-all duration-200"
                       role="menuitem"
                     >
-                      Delete
+                      <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                      Delete Account
                     </button>
                   </div>
                 </div>

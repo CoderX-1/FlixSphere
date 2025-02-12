@@ -11,6 +11,7 @@ import SearchPage from "./pages/Search";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUp";
 import Trending from "./pages/Trending";
+import Account from "./pages/Account";
 import Dmca from "./pages/Dmca";
 import PrivacyPolicy from "./pages/Privacy";
 import ErrorBoundary from './components/ErrorBoundary';
@@ -100,6 +101,11 @@ const routes = [
     element: <Animation />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/Account",
+    element: <Account />,
+    errorElement: <ErrorPage />,
+  }, 
   {
     path: "/Airing",
     element: <Airing />,

@@ -84,9 +84,11 @@ const Explore = () => {
             api_key: TMDB_API_KEY,
             page: page,
             with_genres: genre,
-            primary_release_year: year,
+            [type === 'movie' ? 'primary_release_year' : 'first_air_date_year']: year,
             sort_by: sortBy,
-            region: country,
+            with_origin_country: country,
+            include_adult: false,
+            include_video: false,
           },
         });
         setResults(response.data.results);
@@ -210,14 +212,10 @@ const Explore = () => {
                   className="relative w-full cursor-default rounded-lg !bg-[#1b1f29] py-2 pl-3 pr-10 text-left shadow-md !outline-none sm:text-sm p-1"
                 >
                    <option className="block truncate !tracking-wide" value="popularity.desc">Popularity</option>
-                <option className="block truncate !tracking-wide" value="release_date.desc">Latest Release</option>
-                <option className="block truncate !tracking-wide" value="release_date.asc">Oldest Release</option>
-                {/* <option className="block truncate !tracking-wide" value="original_title.asc">Title (A-Z)</option>
-                <option className="block truncate !tracking-wide" value="original_title.desc">Title (Z-A)</option> */}
-                {/* <option className="block truncate !tracking-wide" value="vote_average.desc">High Rated</option> */}
-                {/* <option className="block truncate !tracking-wide" value="vote_average.asc">Low Rated</option> */}
-                <option className="block truncate !tracking-wide" value="vote_count.desc">Most Voted</option>
-                {/* <option className="block truncate !tracking-wide" value="vote_count.asc">Least Voted</option> */}
+                  <option className="block truncate !tracking-wide" value="primary_release_date.desc">Latest Release</option>
+                  <option className="block truncate !tracking-wide" value="primary_release_date.asc">Oldest Release</option>
+                  <option className="block truncate !tracking-wide" value="vote_average.desc">Highest Rated</option>
+                  <option className="block truncate !tracking-wide" value="vote_count.desc">Most Voted</option>
                 </select>
               </div>
             </div>
